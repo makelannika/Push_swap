@@ -12,7 +12,7 @@
 
 int	main(int argc, char **argv)
 {
-	int		*array;
+	int	*array;
 	char	*str;
 	
 	if (argc == 1)
@@ -22,23 +22,23 @@ int	main(int argc, char **argv)
 	else
 		str = argv[1];
 	if (!digit_check(str))
-		return (error_message());
-	array = int_split(argv[1]); // uses atol, checks overflow &  creates array of ints
+		return (error_message(str)); // remember to free str
+	array = split_to_ints(str); // uses atol, checks overflow & creates array of ints
 	if (!array)
-		return (error_message());
+		return (error_message(str)); 
 		// push_swap(array);
+	free(str);
 	return (0);
 }
 
 char	*args_to_str(char **argv)
 {
-	int		i;
+	int	i;
 	char	str[1];
-	char	temp[1];
+	char	*temp;
 
 	i = 1;
-	str = 0;
-	temp = 0;
+	str[0] = 0;
 	while(i < argc)
 	{
 		temp = str;
@@ -50,8 +50,10 @@ char	*args_to_str(char **argv)
 	return (str);
 }
 
-int	error_message()
+int	error_message(char *str)
 {
+	free(str);
 	write(2, "Error\n", 6);
 	return (-1);
 }
+

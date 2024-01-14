@@ -1,15 +1,14 @@
 int	digit_check(char *str)
 {
-	while(*str)
+	int	i;
+	
+	i = 0;
+	while(str[i])
 	{
-		if (!(*str >= '0' && *str <= '9') && (*str != ' ')
-				&& (*str != '+') && (*str != '-'))
+		if (!(str[i] >= '0' && str[i] <= '9') && (str[i] != ' ')
+				&& (str[i] != '+') && (str[i] != '-'))
 			return (-1);
-		*str++;
+		i++;
 	}
 	return (1);
-}
-
-int	duplicate_check(int *array)
-{
 }

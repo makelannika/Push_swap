@@ -10,6 +10,9 @@ typedef struct s_stack_node
 	int			index;
 	struct	s_list_node	*next;
 	struct  s_list_node     *prev;
-} t_stack_node
+} t_stack_node;
+
+int     digit_check(char *str);
+int     *split_to_ints(char *str, char delimiter);
 
 #endif

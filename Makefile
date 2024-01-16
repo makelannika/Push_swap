@@ -1,6 +1,6 @@
 NAME = push_swap.a
 
-CFILES = main.c		split_to_ints.c		push_swap_utils.c
+CFILES = main.c		input_utils.c		split_to_ints.c		stack_utils.c
 
 OFILES = $(CFILES:.c=.o)
 

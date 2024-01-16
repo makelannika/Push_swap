@@ -14,14 +14,16 @@
 #include "push_swap.h"
 #include <stdio.h>
 
-char    *args_to_str(int argc, char **argv);
-int     error_message(char *str);
+static char    *args_to_str(int argc, char **argv);
+static int     error_message(char *str);
 
 int	main(int argc, char **argv)
 {
+	stack_node	**a;
 	int		*array;
-	char	*str;
-	
+	char		*str;
+
+	a = NULL;	
 	if (argc == 1)
 		return (0);
 	if (argc > 2)
@@ -32,13 +34,14 @@ int	main(int argc, char **argv)
 		return (error_message(str));
 	array = split_to_ints(str, 32);
 	if (!array)
-		return (error_message(str)); 
+		return (error_message(str));
+	create_stack(a, array, count_numbers(str, 32));
 	// push_swap(array);
 	free(str);
 	return (0);
 }
 
-char	*args_to_str(int argc, char **argv)
+static char	*args_to_str(int argc, char **argv)
 {
 	int		i;
 	char	*str;
@@ -57,7 +60,7 @@ char	*args_to_str(int argc, char **argv)
 	return (str);
 }
 
-int	error_message(char *str)
+static int	error_message(char *str)
 {
 	free(str);
 	write(2, "Error\n", 6);

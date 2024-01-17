@@ -6,7 +6,7 @@
 /*   By: amakela <amakela@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 13:26:42 by amakela           #+#    #+#             */
-/*   Updated: 2024/01/17 15:24:29 by amakela          ###   ########.fr       */
+/*   Updated: 2024/01/17 15:30:59 by amakela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,13 @@ void	create_stack(stack_node **a, int *values, int count)
 	{
 	node = create_node(values[count - 1]);
 	if (!node)
-		return; // free stack
+	{
+		free_stack(*a);
+		return;
+	}
 	add_front(a, node);
 	count--;
 	}
-	
 }
 
 stack_node	*create_node(int value)

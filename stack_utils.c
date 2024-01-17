@@ -6,7 +6,7 @@
 /*   By: amakela <amakela@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 13:26:42 by amakela           #+#    #+#             */
-/*   Updated: 2024/01/17 13:41:02 by amakela          ###   ########.fr       */
+/*   Updated: 2024/01/17 15:24:29 by amakela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,28 @@ void	add_front(stack_node **a, stack_node *node)
 		node->next->prev = node;
 	}
 	*a = node;
+}
+
+int	stack_length(stack_node *a)
+{
+	int length;
+
+	length = 0;
+	while (a)
+	{
+		length++;
+		a = a->next;
+	}
+	return (length);
+}
+
+void	free_stack(stack_node *a)
+{
+	while (a->next != NULL)
+	{
+		a = a->next;
+		free(a->prev);
+	}
+	free(a);
 }
 

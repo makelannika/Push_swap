@@ -6,7 +6,7 @@
 /*   By: amakela <amakela@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 13:19:21 by amakela           #+#    #+#             */
-/*   Updated: 2024/01/17 14:15:11 by amakela          ###   ########.fr       */
+/*   Updated: 2024/01/17 15:24:37 by amakela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,7 @@ int			find_duplicates(int *array, int count);
 void		create_stack(stack_node **a, int *values, int size);
 stack_node	*create_node(int value);
 void		add_front(stack_node **a, stack_node *node);
+int			stack_length(stack_node *a);
+void		free_stack(stack_node *a);
 
 #endif

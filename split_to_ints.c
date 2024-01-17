@@ -6,7 +6,7 @@
 /*   By: amakela <amakela@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 14:43:41 by amakela           #+#    #+#             */
-/*   Updated: 2024/01/09 20:46:18 by amakela          ###   ########.fr       */
+/*   Updated: 2024/01/17 14:15:09 by amakela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,30 +14,32 @@
 #include "push_swap.h"
 #include <limits.h>
 
-static int      *free_array(int *array);
-int		count_numbers(char const *str, char delimiter);
+static int	*free_array(int *array);
+int			num_count(char const *str, char delimiter);
 static int	*fill_array(int *array, char const *str, char delimiter);
 
 int	*split_to_ints(char *str, char delimiter)
 {
-	int	num_count;
+	int	count;
 	int	*array;
 
 	if (!str)
 		return (NULL);
-	num_count = count_numbers(str, delimiter);
-	array = malloc(sizeof(int) * num_count);
+	if (!digit_check(str))
+		return (NULL);
+	count = num_count(str, delimiter);
+	array = malloc(sizeof(int) * count);
 	if (!array)
 		return (NULL);
 	array = fill_array(array, str, delimiter);
 	if (!array)
 		return (NULL);
-	if (find_duplicates(array, num_count))
+	if (find_duplicates(array, count))
 		return (free_array(array));
 	return (array);
 }
 
-int	count_numbers(char const *str, char delimiter)
+int	num_count(char const *str, char delimiter)
 {
 	int	i;
 	int	count;

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   input_utils.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: amakela <amakela@student.hive.fi>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/01/17 13:52:05 by amakela           #+#    #+#             */
+/*   Updated: 2024/01/17 14:15:16 by amakela          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 int	digit_check(char *str)
@@ -37,16 +49,16 @@ long	ft_atol(char *str)
 	return (nbr * sign);
 }
 
-int	find_duplicates(int *array, int num_count)
+int	find_duplicates(int *array, int count)
 {
 	int	i;
 	int j;
 
 	i = 0;
 	j = i + 1;
-	while (i < num_count)
+	while (i < count)
 	{
-		while (j <= num_count)
+		while (j <= count)
 		{
 			if (array[i] == array[j++])
 				return (1);

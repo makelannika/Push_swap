@@ -8,7 +8,7 @@ CFLAGS = -Wall -Wextra -Werror
 
 run: $(OFILES)
 	gcc -g $(CFLAGS) $(OFILES) libft/libft.a
-	./a.out 1 2 3 4 5
+	./a.out "1 2 3 4"
 
 all: $(NAME)
 

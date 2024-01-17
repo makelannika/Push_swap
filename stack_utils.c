@@ -1,17 +1,29 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   stack_utils.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: amakela <amakela@student.hive.fi>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/01/17 13:26:42 by amakela           #+#    #+#             */
+/*   Updated: 2024/01/17 13:41:02 by amakela          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-void	create_stack(stack_node **a, int *values, int size)
+void	create_stack(stack_node **a, int *values, int count)
 {
 	stack_node	*node;
 	
 	node = NULL;
-	while (size > 0)
+	while (count > 0)
 	{
-	node = create_node(values[size - 1]);
-//	if (!node)
-//		return (NULL); // free stack
+	node = create_node(values[count - 1]);
+	if (!node)
+		return; // free stack
 	add_front(a, node);
-	size--;
+	count--;
 	}
 	
 }

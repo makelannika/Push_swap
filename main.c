@@ -6,7 +6,7 @@
 /*   By: amakela <amakela@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 14:24:18 by amakela           #+#    #+#             */
-/*   Updated: 2024/01/17 14:15:13 by amakela          ###   ########.fr       */
+/*   Updated: 2024/01/18 16:54:51 by amakela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,14 @@ static int     error_message(char *str, int flag);
 
 int	main(int argc, char **argv)
 {
-	stack_node	**a;
+	stack_node	*a;
+	stack_node	*b;
 	char		*input;
 	int         *values;
 	int			flag = 0;
 
-	a = NULL;	
+	a = NULL;
+	b = NULL;
 	if (argc == 1)
 		return (0);
 	if (argc > 2)
@@ -37,9 +39,9 @@ int	main(int argc, char **argv)
 	values = split_to_ints(input, 32);
 	if (!values)
 		return (error_message(input, flag));
-//	create_stack(a, values, num_count(input, 32));
-	// push_swap(a);
-//	free(input); // & stack
+	create_stack(&a, values, num_count(input, 32));
+//	push_swap(a);
+//	free input & stack
 	return (0);
 }
 

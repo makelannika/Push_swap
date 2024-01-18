@@ -6,7 +6,7 @@
 /*   By: amakela <amakela@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 13:19:21 by amakela           #+#    #+#             */
-/*   Updated: 2024/01/17 15:24:37 by amakela          ###   ########.fr       */
+/*   Updated: 2024/01/18 16:49:15 by amakela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,9 @@ stack_node	*create_node(int value);
 void		add_front(stack_node **a, stack_node *node);
 int			stack_length(stack_node *a);
 void		free_stack(stack_node *a);
+void		swap(stack_node *node);
+void		rotate(stack_node **node);
+void		reverse_rotate(stack_node **node);
+void		push(stack_node **src, stack_node **dest);
 
 #endif

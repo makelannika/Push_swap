@@ -6,7 +6,7 @@
 /*   By: amakela <amakela@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 13:26:42 by amakela           #+#    #+#             */
-/*   Updated: 2024/01/17 15:30:59 by amakela          ###   ########.fr       */
+/*   Updated: 2024/01/18 20:53:27 by amakela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,8 @@ int	stack_length(stack_node *a)
 
 void	free_stack(stack_node *a)
 {
+	if (a == NULL)
+		return ;
 	while (a->next != NULL)
 	{
 		a = a->next;
@@ -75,4 +77,3 @@ void	free_stack(stack_node *a)
 	}
 	free(a);
 }
-

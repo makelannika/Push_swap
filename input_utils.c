@@ -6,11 +6,31 @@
 /*   By: amakela <amakela@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 13:52:05 by amakela           #+#    #+#             */
-/*   Updated: 2024/01/17 14:15:16 by amakela          ###   ########.fr       */
+/*   Updated: 2024/01/18 22:52:13 by amakela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft/libft.h"
 #include "push_swap.h"
+
+char	*args_to_str(int argc, char **argv)
+{
+	int		i;
+	char	*str;
+	char	*temp;
+
+	i = 1;
+	str = 0;
+	while(i < argc)
+	{
+		temp = str;
+		str = ft_strjoin(str, argv[i++]);
+		free(temp);
+		if (!str)
+			return (NULL);
+	}
+	return (str);
+}
 
 int	digit_check(char *str)
 {
@@ -29,7 +49,7 @@ int	digit_check(char *str)
 
 long	ft_atol(char *str)
 {
-	int	i;
+	int		i;
 	long	nbr;
 	long	sign;
 
@@ -69,3 +89,8 @@ int	find_duplicates(int *array, int count)
 	return (0);
 }
 
+int	*error_message()
+{
+	write(2, "Error\n", 6);
+	return (NULL);
+}

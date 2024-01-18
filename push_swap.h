@@ -6,7 +6,7 @@
 /*   By: amakela <amakela@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 13:19:21 by amakela           #+#    #+#             */
-/*   Updated: 2024/01/18 16:49:15 by amakela          ###   ########.fr       */
+/*   Updated: 2024/01/18 22:57:42 by amakela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ typedef struct stack_node
 	struct  stack_node	*prev;
 } stack_node;
 
+char		*args_to_str(int argc, char **argv);
 int			digit_check(char *str);
 int			*split_to_ints(char *str, char delimiter);
 int			num_count(char const *str, char delimiter);
@@ -37,5 +38,8 @@ void		swap(stack_node *node);
 void		rotate(stack_node **node);
 void		reverse_rotate(stack_node **node);
 void		push(stack_node **src, stack_node **dest);
+void		push_swap(stack_node *a);
+int			is_sorted(stack_node *a);
+int			*error_message();
 
 #endif

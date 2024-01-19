@@ -6,7 +6,7 @@
 /*   By: amakela <amakela@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 14:43:41 by amakela           #+#    #+#             */
-/*   Updated: 2024/01/18 22:57:45 by amakela          ###   ########.fr       */
+/*   Updated: 2024/01/19 16:31:22 by amakela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,7 @@
 #include "push_swap.h"
 #include <limits.h>
 
-static int	*free_array(int *array);
-int			num_count(char const *str, char delimiter);
-static int	*fill_array(int *array, char const *str, char delimiter);
+static int	fill_array(int *array, char const *str, char delimiter);
 
 int	*split_to_ints(char *str, char delimiter)
 {
@@ -31,8 +29,7 @@ int	*split_to_ints(char *str, char delimiter)
 	array = malloc(sizeof(int) * count);
 	if (!array)
 		return (NULL);
-	array = fill_array(array, str, delimiter);
-	if (!array)
+	if (!fill_array(array, str, delimiter))
 		return (NULL);
 	if (find_duplicates(array, count))
 	{
@@ -61,7 +58,7 @@ int	num_count(char const *str, char delimiter)
 	return (count);
 }
 
-static int	*fill_array(int *array, char const *str, char delimiter)
+static int	fill_array(int *array, char const *str, char delimiter)
 {
 	int		i;
 	int		j;
@@ -81,22 +78,18 @@ static int	*fill_array(int *array, char const *str, char delimiter)
 		if (strl != 0)
 		{
 			nbr = ft_atol(ft_substr(str, i - strl, strl));
-			if (nbr < INT_MIN || nbr > INT_MAX)
-			{
-				free_array(array);
-				return (error_message());
-			}
+			if (!overflow_check(nbr, array))
+				return (0);
 			array[j++] = (int)nbr;
 		}
 		while (str[i] && str[i] == delimiter)
 			i++;
 	}
-	return (array);
+	return (1);
 }
 
-static int	*free_array(int *array)
+int	*free_array(int *array)
 {
 	free(array);
 	return (NULL);
 }
-

@@ -6,12 +6,13 @@
 /*   By: amakela <amakela@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 13:52:05 by amakela           #+#    #+#             */
-/*   Updated: 2024/01/18 22:52:13 by amakela          ###   ########.fr       */
+/*   Updated: 2024/01/19 15:52:16 by amakela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 #include "push_swap.h"
+#include <limits.h>
 
 char	*args_to_str(int argc, char **argv)
 {
@@ -21,7 +22,7 @@ char	*args_to_str(int argc, char **argv)
 
 	i = 1;
 	str = 0;
-	while(i < argc)
+	while (i < argc)
 	{
 		temp = str;
 		str = ft_strjoin(str, argv[i++]);
@@ -35,12 +36,12 @@ char	*args_to_str(int argc, char **argv)
 int	digit_check(char *str)
 {
 	int	i;
-	
+
 	i = 0;
-	while(str[i])
+	while (str[i])
 	{
 		if (!(str[i] >= '0' && str[i] <= '9') && (str[i] != ' ')
-				&& (str[i] != '+') && (str[i] != '-'))
+			&& (str[i] != '+') && (str[i] != '-'))
 			return (-1);
 		i++;
 	}
@@ -69,10 +70,21 @@ long	ft_atol(char *str)
 	return (nbr * sign);
 }
 
+int	overflow_check(long nbr, int *array)
+{
+	if (nbr < INT_MIN || nbr > INT_MAX)
+	{
+		free_array(array);
+		error_message();
+		return (0);
+	}
+	return (1);
+}
+
 int	find_duplicates(int *array, int count)
 {
 	int	i;
-	int j;
+	int	j;
 
 	i = 0;
 	j = i + 1;
@@ -87,10 +99,4 @@ int	find_duplicates(int *array, int count)
 		j = i + 1;
 	}
 	return (0);
-}
-
-int	*error_message()
-{
-	write(2, "Error\n", 6);
-	return (NULL);
 }

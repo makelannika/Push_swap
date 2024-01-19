@@ -6,35 +6,35 @@
 /*   By: amakela <amakela@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 13:26:42 by amakela           #+#    #+#             */
-/*   Updated: 2024/01/18 20:53:27 by amakela          ###   ########.fr       */
+/*   Updated: 2024/01/19 18:15:00 by amakela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	create_stack(stack_node **a, int *values, int count)
+void	create_stack(t_stack_node **a, int *values, int count)
 {
-	stack_node	*node;
-	
+	t_stack_node	*node;
+
 	node = NULL;
 	while (count > 0)
 	{
-	node = create_node(values[count - 1]);
-	if (!node)
-	{
-		free_stack(*a);
-		return;
-	}
-	add_front(a, node);
-	count--;
+		node = create_node(values[count - 1]);
+		if (!node)
+		{
+			free_stack(*a);
+			return ;
+		}
+		add_front(a, node);
+		count--;
 	}
 }
 
-stack_node	*create_node(int value)
+t_stack_node	*create_node(int value)
 {
-	stack_node	*new_node;
+	t_stack_node	*new_node;
 
-	new_node = malloc(sizeof(stack_node));
+	new_node = malloc(sizeof(t_stack_node));
 	if (!new_node)
 		return (NULL);
 	new_node->prev = NULL;
@@ -43,7 +43,7 @@ stack_node	*create_node(int value)
 	return (new_node);
 }
 
-void	add_front(stack_node **a, stack_node *node)
+void	add_front(t_stack_node **a, t_stack_node *node)
 {
 	if (*a != NULL)
 	{
@@ -53,9 +53,9 @@ void	add_front(stack_node **a, stack_node *node)
 	*a = node;
 }
 
-int	stack_length(stack_node *a)
+int	stack_length(t_stack_node *a)
 {
-	int length;
+	int	length;
 
 	length = 0;
 	while (a)
@@ -66,7 +66,7 @@ int	stack_length(stack_node *a)
 	return (length);
 }
 
-void	free_stack(stack_node *a)
+void	free_stack(t_stack_node *a)
 {
 	if (a == NULL)
 		return ;

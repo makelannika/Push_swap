@@ -6,7 +6,7 @@
 /*   By: amakela <amakela@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 17:00:43 by amakela           #+#    #+#             */
-/*   Updated: 2024/01/19 18:42:39 by amakela          ###   ########.fr       */
+/*   Updated: 2024/01/19 18:53:11 by amakela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static void	smallest_second(t_stack_node **node, int greatest, char stack)
 	}
 }
 
-static void smallest_last(t_stack_node **node, int	greatest, char stack)
+static void	smallest_last(t_stack_node **node, int	greatest, char stack)
 {
 	if (greatest == 0)
 	{

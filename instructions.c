@@ -6,7 +6,7 @@
 /*   By: amakela <amakela@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 15:35:43 by amakela           #+#    #+#             */
-/*   Updated: 2024/01/18 22:57:50 by amakela          ###   ########.fr       */
+/*   Updated: 2024/01/19 12:20:29 by amakela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 void	swap(stack_node *node)
 {
-	if (stack_length(node) < 2)
-		return ;
 	int	temp;
 
 	temp = 0;

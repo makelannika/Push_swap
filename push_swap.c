@@ -6,7 +6,7 @@
 /*   By: amakela <amakela@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 17:13:34 by amakela           #+#    #+#             */
-/*   Updated: 2024/01/19 18:18:26 by amakela          ###   ########.fr       */
+/*   Updated: 2024/01/19 19:32:14 by amakela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,9 @@ void	push_swap(t_stack_node **a)
 
 	b = NULL;
 	if (is_sorted(*a))
-		ft_printf("sorted");
+		return ;
 	set_index(*a);
-	sort_three(a, 'a');
+	if (stack_length(*a) <= 3)
+		sort_three(a, 'a');
 	ft_printf("\n");
-/*	while (a != NULL)
-	{
-		ft_printf("%d\n", a->value);
-		a = a->next;
-	}*/
 }

@@ -6,7 +6,7 @@
 /*   By: amakela <amakela@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 14:43:41 by amakela           #+#    #+#             */
-/*   Updated: 2024/01/19 16:31:22 by amakela          ###   ########.fr       */
+/*   Updated: 2024/01/19 19:29:44 by amakela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ int	*split_to_ints(char *str, char delimiter)
 	if (!digit_check(str))
 		return (error_message());
 	count = num_count(str, delimiter);
+	if (count < 2)
+		return (NULL);
 	array = malloc(sizeof(int) * count);
 	if (!array)
 		return (NULL);

@@ -6,7 +6,7 @@
 /*   By: amakela <amakela@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 17:00:43 by amakela           #+#    #+#             */
-/*   Updated: 2024/01/19 18:53:11 by amakela          ###   ########.fr       */
+/*   Updated: 2024/01/19 19:30:51 by amakela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,12 @@ void	sort_three(t_stack_node **node, char stack)
 	int smallest;
 	int	greatest;
 
+	if (stack_length(*node) == 2)
+	{
+		swap(*node);
+		ft_printf("s%c\n", stack);
+		return ;
+	}
 	smallest = find_smallest(*node);
 	greatest = find_greatest(*node);
 	if (smallest == 0)

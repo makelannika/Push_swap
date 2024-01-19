@@ -6,7 +6,7 @@
 #    By: amakela <amakela@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/18 20:06:32 by amakela           #+#    #+#              #
-#    Updated: 2024/01/19 18:21:01 by amakela          ###   ########.fr        #
+#    Updated: 2024/01/19 19:33:54 by amakela          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ CFLAGS = -Wall -Wextra -Werror
 
 run: $(NAME)
 	gcc -g $(NAME) libft/libft.a
-	./a.out 3 2 1
+	./a.out 43211 1424
 
 all: $(NAME)
 

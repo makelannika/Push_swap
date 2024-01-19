@@ -6,11 +6,12 @@
 /*   By: amakela <amakela@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 19:52:34 by amakela           #+#    #+#             */
-/*   Updated: 2024/01/19 18:44:15 by amakela          ###   ########.fr       */
+/*   Updated: 2024/01/19 20:46:25 by amakela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <limits.h>
 
 int	is_sorted(t_stack_node *a)
 {
@@ -75,9 +76,21 @@ int	find_greatest(t_stack_node *node)
 	return (index);
 }
 
-int	compare_two(t_stack_node *node)
+int	find_target(t_stack_node *node, int value)
 {
-	if (node->value > node->next->value)
-		return (0);
-	return (1);
+	int	difference;
+	int	index;
+
+	index = 0;
+	difference = INT_MAX;
+	while (node != NULL)
+	{
+		if ((node->value > value) && (node->value - value < difference))
+		{
+			difference = node->value - value;
+			index = node->index;
+		}
+		node = node->next;
+	}
+	return (index);
 }

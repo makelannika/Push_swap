@@ -6,7 +6,7 @@
 /*   By: amakela <amakela@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 15:35:43 by amakela           #+#    #+#             */
-/*   Updated: 2024/01/19 20:46:23 by amakela          ###   ########.fr       */
+/*   Updated: 2024/01/20 19:33:43 by amakela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ void	reverse_rotate(t_stack_node **node)
 	current->next = *node;
 	current->prev->next = NULL;
 	current->prev = NULL;
+	(*node)->prev = current;
 	*node = current;
 }
 

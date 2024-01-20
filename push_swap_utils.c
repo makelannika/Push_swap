@@ -6,7 +6,7 @@
 /*   By: amakela <amakela@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 19:52:34 by amakela           #+#    #+#             */
-/*   Updated: 2024/01/19 20:46:25 by amakela          ###   ########.fr       */
+/*   Updated: 2024/01/20 19:33:45 by amakela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	is_sorted(t_stack_node *a)
 	return (1);
 }
 
-void	set_index(t_stack_node *node)
+void	set_indices(t_stack_node *node)
 {
 	int	index;
 
@@ -92,5 +92,7 @@ int	find_target(t_stack_node *node, int value)
 		}
 		node = node->next;
 	}
+	if (difference == INT_MAX)
+		index = find_smallest(node);
 	return (index);
 }

@@ -6,12 +6,14 @@
 /*   By: amakela <amakela@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 14:38:24 by amakela           #+#    #+#             */
-/*   Updated: 2024/01/20 19:31:27 by amakela          ###   ########.fr       */
+/*   Updated: 2024/01/20 19:55:36 by amakela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 #include "push_swap.h"
+
+static void rotation(int index, t_stack_node **a);
 
 void	sort_five(t_stack_node **a, t_stack_node **b)
 {
@@ -33,25 +35,7 @@ void	sort_five(t_stack_node **a, t_stack_node **b)
 		target_index = find_target(*a, (*b)->value);
 		if (target_index != 0)
 		{
-			if ((stack_length(*a) % 2 != 0 && target_index <= stack_length(*a) / 2)
-					|| (stack_length(*a) % 2 == 0 && target_index < stack_length(*a) / 2))
-				{
-					while (target_index > 0)
-					{
-						rotate(a);
-						ft_printf("ra\n");
-						target_index--;
-					}
-				}
-			else
-			{
-				while (target_index < stack_length(*a))
-				{
-					reverse_rotate(a);
-					ft_printf("rra\n");
-					target_index++;
-				}
-			}
+			rotation(target_index, a);
 		}
 		push(b, a);
 		ft_printf("pa\n");
@@ -60,24 +44,29 @@ void	sort_five(t_stack_node **a, t_stack_node **b)
 	{
 		set_indices(*a);
 		smallest = find_smallest(*a);
-		if ((stack_length(*a) % 2 != 0 && smallest <= stack_length(*a) / 2)
-				|| (stack_length(*a) % 2 == 0 && smallest < stack_length(*a) / 2))
+		rotation(smallest, a);
+	}
+}
+
+static void	rotation(int index, t_stack_node **a)
+{
+	if ((stack_length(*a) % 2 != 0 && index <= stack_length(*a) / 2)
+			|| (stack_length(*a) % 2 == 0 && index < stack_length(*a) / 2))
+	{
+		while (index > 0)
 		{
-			while (smallest > 0)
-			{
-				rotate(a);
-				ft_printf("ra\n");
-				smallest--;
-			}
+			rotate(a);
+			ft_printf("ra\n");
+			index--;
 		}
-		else
+	}
+	else
+	{
+		while (index < stack_length(*a))
 		{
-			while (smallest < stack_length(*a))
-			{
-				reverse_rotate(a);
-				ft_printf("rra\n");
-				smallest++;
-			}
+			reverse_rotate(a);
+			ft_printf("rra\n");
+			index++;
 		}
 	}
 }

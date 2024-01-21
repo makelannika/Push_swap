@@ -6,7 +6,7 @@
 /*   By: amakela <amakela@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 13:19:21 by amakela           #+#    #+#             */
-/*   Updated: 2024/01/20 19:33:48 by amakela          ###   ########.fr       */
+/*   Updated: 2024/01/21 17:57:11 by amakela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,10 @@ typedef struct stack_node
 {
 	int					value;
 	int					index;
+	int					rot_count;
+	int					above_median;
+	int					target;
+	int					total_ops;
 	struct stack_node	*next;
 	struct stack_node	*prev;
 }	t_stack_node;
@@ -30,9 +34,9 @@ int				*split_to_ints(char *str, char delimiter);
 int				num_count(char const *str, char delimiter);
 long			ft_atol(char *str);
 int				find_duplicates(int *array, int count);
-int             overflow_check(long nbr, int *array);
-int             *free_array(int *array);
-int             *error_message(void);
+int				overflow_check(long nbr, int *array);
+int				*free_array(int *array);
+int				*error_message(void);
 void			create_stack(t_stack_node **a, int *values, int size);
 t_stack_node	*create_node(int value);
 void			add_front(t_stack_node **a, t_stack_node *node);
@@ -44,12 +48,15 @@ void			reverse_rotate(t_stack_node **node);
 void			push(t_stack_node **src, t_stack_node **dest);
 void			push_swap(t_stack_node **a);
 int				is_sorted(t_stack_node *a);
-void			set_indices(t_stack_node *node);
 void			sort_three(t_stack_node **node, char stack);
 void			sort_five(t_stack_node **a, t_stack_node **b);
 int				find_smallest(t_stack_node *node);
 int				find_greatest(t_stack_node *node);
 int				find_target(t_stack_node *node, int value);
+void			set_values(t_stack_node *node);
+void			set_indices(t_stack_node *node);
+void			set_position(t_stack_node *node);
+void			set_target(t_stack_node *src, t_stack_node *dst);
+void			set_total_ops(t_stack_node *node, t_stack_node *target);
 
 #endif
-

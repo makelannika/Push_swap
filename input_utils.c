@@ -6,7 +6,7 @@
 /*   By: amakela <amakela@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 13:52:05 by amakela           #+#    #+#             */
-/*   Updated: 2024/01/19 15:52:16 by amakela          ###   ########.fr       */
+/*   Updated: 2024/01/21 17:39:03 by amakela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,9 +88,9 @@ int	find_duplicates(int *array, int count)
 
 	i = 0;
 	j = i + 1;
-	while (i < count)
+	while (i < count -1)
 	{
-		while (j <= count)
+		while (j < count)
 		{
 			if (array[i] == array[j++])
 				return (1);

@@ -6,7 +6,7 @@
 /*   By: amakela <amakela@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 14:24:18 by amakela           #+#    #+#             */
-/*   Updated: 2024/01/21 18:00:16 by amakela          ###   ########.fr       */
+/*   Updated: 2024/01/21 18:45:34 by amakela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,13 @@ int	main(int argc, char **argv)
 	if (!values)
 		return (free_memory(input, a, flag));
 	create_stack(&a, values, num_count(input, 32));
+	push(&a, &b);
+	push(&a, &b);
+	push(&a, &b);
+	set_values(a);
+	set_values(b);
+	set_target(b, a);
+	set_total_ops(b, a);
 	//	push_swap(&a);
 	while (b != NULL)
 	{

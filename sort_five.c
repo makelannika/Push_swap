@@ -6,7 +6,7 @@
 /*   By: amakela <amakela@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 14:38:24 by amakela           #+#    #+#             */
-/*   Updated: 2024/01/21 17:05:23 by amakela          ###   ########.fr       */
+/*   Updated: 2024/01/21 18:43:32 by amakela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	sort_five(t_stack_node **a, t_stack_node **b)
 	while (stack_length(*b))
 	{
 		set_indices(*a);
-		target_index = find_target(*a, (*b)->value);
+		target_index = get_target_idx(*a, (*b)->value);
 		if (target_index != 0)
 		{
 			rotation(target_index, a);

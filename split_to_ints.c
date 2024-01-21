@@ -6,7 +6,7 @@
 /*   By: amakela <amakela@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 14:43:41 by amakela           #+#    #+#             */
-/*   Updated: 2024/01/19 20:46:27 by amakela          ###   ########.fr       */
+/*   Updated: 2024/01/21 17:45:01 by amakela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ int	*split_to_ints(char *str, char delimiter)
 	{
 		free_array(array);
 		return (error_message());
+		ft_printf("here\n");
 	}
 	return (array);
 }

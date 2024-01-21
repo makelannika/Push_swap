@@ -6,14 +6,14 @@
 /*   By: amakela <amakela@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 14:38:24 by amakela           #+#    #+#             */
-/*   Updated: 2024/01/20 19:55:36 by amakela          ###   ########.fr       */
+/*   Updated: 2024/01/21 17:05:23 by amakela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 #include "push_swap.h"
 
-static void rotation(int index, t_stack_node **a);
+static void	rotation(int index, t_stack_node **a);
 
 void	sort_five(t_stack_node **a, t_stack_node **b)
 {
@@ -51,7 +51,7 @@ void	sort_five(t_stack_node **a, t_stack_node **b)
 static void	rotation(int index, t_stack_node **a)
 {
 	if ((stack_length(*a) % 2 != 0 && index <= stack_length(*a) / 2)
-			|| (stack_length(*a) % 2 == 0 && index < stack_length(*a) / 2))
+		|| (stack_length(*a) % 2 == 0 && index < stack_length(*a) / 2))
 	{
 		while (index > 0)
 		{

@@ -6,20 +6,20 @@
 /*   By: amakela <amakela@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 17:00:43 by amakela           #+#    #+#             */
-/*   Updated: 2024/01/20 16:58:16 by amakela          ###   ########.fr       */
+/*   Updated: 2024/01/21 16:54:44 by amakela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 #include "push_swap.h"
 
-static void smallest_first(t_stack_node **node, char stack);
-static void smallest_second(t_stack_node **node, int greatest, char stack);
-static void smallest_last(t_stack_node **node, int  greatest, char stack);
+static void	smallest_first(t_stack_node **node, char stack);
+static void	smallest_second(t_stack_node **node, int greatest, char stack);
+static void	smallest_last(t_stack_node **node, int greatest, char stack);
 
 void	sort_three(t_stack_node **node, char stack)
 {
-	int smallest;
+	int	smallest;
 	int	greatest;
 
 	if (stack_length(*node) == 2)
@@ -40,9 +40,9 @@ void	sort_three(t_stack_node **node, char stack)
 
 static void	smallest_first(t_stack_node **node, char stack)
 {
-		swap(*node);
-		rotate(node);
-		ft_printf("s%c\nr%c\n", stack, stack);
+	swap(*node);
+	rotate(node);
+	ft_printf("s%c\nr%c\n", stack, stack);
 }
 
 static void	smallest_second(t_stack_node **node, int greatest, char stack)
@@ -59,7 +59,7 @@ static void	smallest_second(t_stack_node **node, int greatest, char stack)
 	}
 }
 
-static void	smallest_last(t_stack_node **node, int	greatest, char stack)
+static void	smallest_last(t_stack_node **node, int greatest, char stack)
 {
 	if (greatest == 0)
 	{

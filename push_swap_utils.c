@@ -6,7 +6,7 @@
 /*   By: amakela <amakela@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 19:52:34 by amakela           #+#    #+#             */
-/*   Updated: 2024/01/21 17:57:14 by amakela          ###   ########.fr       */
+/*   Updated: 2024/01/21 18:43:10 by amakela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int	find_greatest(t_stack_node *node)
 	return (index);
 }
 
-int	find_target(t_stack_node *dest, int value)
+int	get_target_idx(t_stack_node *dest, int value)
 {
 	t_stack_node *curr;
 	int	difference;
@@ -85,3 +85,14 @@ int	find_target(t_stack_node *dest, int value)
 		index = find_smallest(dest);
 	return (index);
 }
+
+t_stack_node *get_target_node(t_stack_node *target, int index)
+{
+	while (index > 0)
+	{
+		target = target->next;
+		index--;
+	}
+	return (target);
+}
+

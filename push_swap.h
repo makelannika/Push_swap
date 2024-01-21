@@ -6,7 +6,7 @@
 /*   By: amakela <amakela@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 13:19:21 by amakela           #+#    #+#             */
-/*   Updated: 2024/01/21 17:57:11 by amakela          ###   ########.fr       */
+/*   Updated: 2024/01/21 18:43:02 by amakela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,12 @@ void			sort_three(t_stack_node **node, char stack);
 void			sort_five(t_stack_node **a, t_stack_node **b);
 int				find_smallest(t_stack_node *node);
 int				find_greatest(t_stack_node *node);
-int				find_target(t_stack_node *node, int value);
+int				get_target_idx(t_stack_node *node, int value);
 void			set_values(t_stack_node *node);
 void			set_indices(t_stack_node *node);
 void			set_position(t_stack_node *node);
 void			set_target(t_stack_node *src, t_stack_node *dst);
 void			set_total_ops(t_stack_node *node, t_stack_node *target);
+t_stack_node	*get_target_node(t_stack_node *target, int index);
 
 #endif

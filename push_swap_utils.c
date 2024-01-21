@@ -6,7 +6,7 @@
 /*   By: amakela <amakela@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 19:52:34 by amakela           #+#    #+#             */
-/*   Updated: 2024/01/20 19:33:45 by amakela          ###   ########.fr       */
+/*   Updated: 2024/01/21 17:57:14 by amakela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,19 +23,6 @@ int	is_sorted(t_stack_node *a)
 			return (0);
 	}
 	return (1);
-}
-
-void	set_indices(t_stack_node *node)
-{
-	int	index;
-
-	index = 0;
-	while (node != NULL)
-	{
-		node->index = index;
-		node = node->next;
-		index++;
-	}
 }
 
 int	find_smallest(t_stack_node *node)
@@ -76,23 +63,25 @@ int	find_greatest(t_stack_node *node)
 	return (index);
 }
 
-int	find_target(t_stack_node *node, int value)
+int	find_target(t_stack_node *dest, int value)
 {
+	t_stack_node *curr;
 	int	difference;
 	int	index;
 
 	index = 0;
 	difference = INT_MAX;
-	while (node != NULL)
+	curr = dest;
+	while (curr != NULL)
 	{
-		if ((node->value > value) && (node->value - value < difference))
+		if ((curr->value > value) && (curr->value - value < difference))
 		{
-			difference = node->value - value;
-			index = node->index;
+			difference = curr->value - value;
+			index = curr->index;
 		}
-		node = node->next;
+		curr = curr->next;
 	}
 	if (difference == INT_MAX)
-		index = find_smallest(node);
+		index = find_smallest(dest);
 	return (index);
 }

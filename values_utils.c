@@ -6,7 +6,7 @@
 /*   By: amakela <amakela@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 14:35:45 by amakela           #+#    #+#             */
-/*   Updated: 2024/01/21 17:57:33 by amakela          ###   ########.fr       */
+/*   Updated: 2024/01/21 18:42:41 by amakela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,15 +58,19 @@ void	set_target(t_stack_node *src, t_stack_node *dst)
 {
 	while (src != NULL)
 	{
-		src->target = find_target(dst, src->value);
+		src->target = get_target_idx(dst, src->value);
 		src = src->next;
 	}
 }
 
-void	set_total_ops(t_stack_node *node, t_stack_node *target)
+void	set_total_ops(t_stack_node *node, t_stack_node *dst)
 {
+	t_stack_node *target;
+
+	target = NULL;
 	while (node != NULL)
 	{
+		target = get_target_node(dst, node->target);
 		if (node->above_median != target->above_median)
 			node->total_ops = node->rot_count + target->rot_count;
 		else

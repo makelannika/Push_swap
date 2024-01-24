@@ -6,7 +6,7 @@
 /*   By: amakela <amakela@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 17:00:43 by amakela           #+#    #+#             */
-/*   Updated: 2024/01/21 16:54:44 by amakela          ###   ########.fr       */
+/*   Updated: 2024/01/24 17:57:11 by amakela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	sort_three(t_stack_node **node, char stack)
 		ft_printf("s%c\n", stack);
 		return ;
 	}
+	set_indices(*node);
 	smallest = find_smallest(*node);
 	greatest = find_greatest(*node);
 	if (smallest == 0)

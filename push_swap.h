@@ -6,7 +6,7 @@
 /*   By: amakela <amakela@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 13:19:21 by amakela           #+#    #+#             */
-/*   Updated: 2024/01/21 18:43:02 by amakela          ###   ########.fr       */
+/*   Updated: 2024/01/24 18:28:27 by amakela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,5 +59,9 @@ void			set_position(t_stack_node *node);
 void			set_target(t_stack_node *src, t_stack_node *dst);
 void			set_total_ops(t_stack_node *node, t_stack_node *target);
 t_stack_node	*get_target_node(t_stack_node *target, int index);
+t_stack_node	*get_node_to_push(t_stack_node *node);
+void			rotation(t_stack_node **src, t_stack_node **dst, char s, char d);
+void			rotate_one(t_stack_node **node, int above, int times, char stack);
+void			rotate_two(t_stack_node **src, t_stack_node **dst, int above, int times);
 
 #endif

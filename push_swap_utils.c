@@ -6,13 +6,14 @@
 /*   By: amakela <amakela@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 19:52:34 by amakela           #+#    #+#             */
-/*   Updated: 2024/01/24 18:40:02 by amakela          ###   ########.fr       */
+/*   Updated: 2024/01/25 16:39:40 by amakela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 #include "push_swap.h"
 #include <limits.h>
+#include <stdio.h>
 
 int	is_sorted(t_stack_node *a)
 {
@@ -67,22 +68,23 @@ int	find_greatest(t_stack_node *node)
 int	get_target_idx(t_stack_node *dest, int value)
 {
 	t_stack_node	*curr;
-	int				difference;
+	unsigned int	difference;
 	int				index;
 
 	index = 0;
-	difference = INT_MAX;
+	difference = UINT_MAX;
 	curr = dest;
 	while (curr != NULL)
 	{
-		if ((curr->value > value) && (curr->value - value < difference))
+		if ((curr->value > value)
+			&& ((unsigned int)(curr->value - value) < difference))
 		{
 			difference = curr->value - value;
 			index = curr->index;
 		}
 		curr = curr->next;
 	}
-	if (difference == INT_MAX)
+	if (difference == UINT_MAX)
 		index = find_smallest(dest);
 	return (index);
 }
@@ -99,7 +101,7 @@ t_stack_node	*get_target_node(t_stack_node *target, int index)
 
 t_stack_node	*get_node_to_push(t_stack_node *node)
 {
-	int index = 0;
+	int	index = 0;
 	int ops = node->total_ops;
 	t_stack_node *curr;
 

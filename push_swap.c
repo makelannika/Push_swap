@@ -6,7 +6,7 @@
 /*   By: amakela <amakela@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 17:13:34 by amakela           #+#    #+#             */
-/*   Updated: 2024/01/24 17:55:32 by amakela          ###   ########.fr       */
+/*   Updated: 2024/01/26 16:25:38 by amakela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,6 @@ void	push_swap(t_stack_node **a)
 		sort_three(a, 'a');
 	else if (stack_length(*a) <= 5)
 		sort_five(a, &b);
-	ft_printf("\n");
+	else
+		sort(a, &b);
 }

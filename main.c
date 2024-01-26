@@ -6,7 +6,7 @@
 /*   By: amakela <amakela@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 14:24:18 by amakela           #+#    #+#             */
-/*   Updated: 2024/01/24 17:56:44 by amakela          ###   ########.fr       */
+/*   Updated: 2024/01/26 16:42:19 by amakela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ static int	free_memory(char *str, t_stack_node *a, int flag);
 int	main(int argc, char **argv)
 {
 	t_stack_node	*a;
-//	t_stack_node	*b;
 	char			*input;
 	int				*values;
 	int				flag;
@@ -39,19 +38,13 @@ int	main(int argc, char **argv)
 	if (!values)
 		return (free_memory(input, a, flag));
 	create_stack(&a, values, num_count(input, 32));
-/*	push(&a, &b);
-	push(&a, &b);
-	push(&a, &b);
-	set_values(a);
-	set_values(b);
-	set_target(b, a);
-	set_total_ops(b, a);*/
 	push_swap(&a);
+/*	ft_printf("\n");
 	while (a != NULL)
 	{
 		ft_printf("%d\n", a->value);
 		a = a->next;
-	}
+	}*/
 	free_memory(input, a, flag);
 	return (0);
 }

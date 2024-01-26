@@ -6,7 +6,7 @@
 /*   By: amakela <amakela@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 18:33:16 by amakela           #+#    #+#             */
-/*   Updated: 2024/01/24 18:40:06 by amakela          ###   ########.fr       */
+/*   Updated: 2024/01/26 16:46:54 by amakela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,20 +27,20 @@ void	rotation(t_stack_node **src, t_stack_node **dst, char s, char d)
 		times = target->rot_count;
 	if (to_push->above_median == target->above_median)
 	{
-		rotate_two(src, dst, to_push->above_median, times);
+		rot_two(src, dst, to_push->above_median, times);
 		if (to_push->rot_count > target->rot_count)
-			rotate_one(src, to_push->above_median, to_push->rot_count - times, s);
+			rot_one(src, to_push->above_median, to_push->rot_count - times, s);
 		else
-			rotate_one(dst, target->above_median, target->rot_count - times, d);
+			rot_one(dst, target->above_median, target->rot_count - times, d);
 	}
 	else
 	{
-		rotate_one(src, to_push->above_median, to_push->rot_count, s);
-		rotate_one(dst, target->above_median, target->rot_count, d);
+		rot_one(src, to_push->above_median, to_push->rot_count, s);
+		rot_one(dst, target->above_median, target->rot_count, d);
 	}
 }
 
-void	rotate_one(t_stack_node **node, int above, int times, char stack)
+void	rot_one(t_stack_node **node, int above, int times, char stack)
 {
 	while (times--)
 	{
@@ -57,7 +57,7 @@ void	rotate_one(t_stack_node **node, int above, int times, char stack)
 	}
 }
 
-void	rotate_two(t_stack_node **src, t_stack_node **dst, int above, int times)
+void	rot_two(t_stack_node **src, t_stack_node **dst, int above, int times)
 {
 	while (times--)
 	{

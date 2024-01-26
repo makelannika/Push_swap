@@ -6,7 +6,7 @@
 /*   By: amakela <amakela@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 14:38:24 by amakela           #+#    #+#             */
-/*   Updated: 2024/01/24 18:33:05 by amakela          ###   ########.fr       */
+/*   Updated: 2024/01/26 16:35:38 by amakela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,10 @@
 
 void	sort_five(t_stack_node **a, t_stack_node **b)
 {
-	t_stack_node *target;
-	t_stack_node *smallest;
+	t_stack_node	*target;
+	t_stack_node	*smallest;
 
+	smallest = NULL;
 	while (stack_length(*a) > 3)
 	{
 		push(a, b);
@@ -25,26 +26,17 @@ void	sort_five(t_stack_node **a, t_stack_node **b)
 	}
 	sort_three(a, 'a');
 	if (stack_length(*b) > 1)
-	{
-		set_values(*a);
-		set_values(*b);
-		set_target(*b, *a);
-		set_total_ops(*b, *a);
-		rotation(b, a, 'b', 'a');
-		push(b, a);
-		ft_printf("pa\n");
-	}
+		count_and_push(b, a, 'b', 'a');
 	set_values(*a);
-	set_target(*b, *a);
+	set_target_a(*b, *a);
 	target = get_target_node(*a, (*b)->target);
-	rotate_one(a, target->above_median, target->rot_count, 'a');
+	rot_one(a, target->above_median, target->rot_count, 'a');
 	push(b, a);
 	ft_printf("pa\n");
 	if (!is_sorted(*a))
 	{
 		set_values(*a);
 		smallest = get_target_node(*a, find_smallest(*a));
-		rotate_one(a, smallest->above_median, smallest->rot_count, 'a');
+		rot_one(a, smallest->above_median, smallest->rot_count, 'a');
 	}
 }
-

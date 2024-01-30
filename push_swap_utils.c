@@ -6,7 +6,7 @@
 /*   By: amakela <amakela@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 19:52:34 by amakela           #+#    #+#             */
-/*   Updated: 2024/01/26 16:38:36 by amakela          ###   ########.fr       */
+/*   Updated: 2024/01/30 13:43:36 by amakela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ int	target_idx_b(t_stack_node *dest, int value)
 		if ((curr->value < value)
 			&& ((unsigned int)(value - curr->value) < difference))
 		{
-			difference = curr->value - value;
+			difference = value - curr->value;
 			index = curr->index;
 		}
 		curr = curr->next;

@@ -6,7 +6,7 @@
 /*   By: amakela <amakela@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 14:07:51 by amakela           #+#    #+#             */
-/*   Updated: 2024/01/30 12:41:08 by amakela          ###   ########.fr       */
+/*   Updated: 2024/01/30 18:33:21 by amakela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void	count_and_push(t_stack_node **src, t_stack_node **dst, char s, char d)
 		set_target_b(*src, *dst);
 	else
 		set_target_a(*src, *dst);
+	set_total_ops(*src, *dst);
 	rotation(src, dst, s, d);
 	push(src, dst);
 	ft_printf("p%c\n", d);

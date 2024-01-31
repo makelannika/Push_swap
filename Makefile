@@ -6,7 +6,7 @@
 #    By: amakela <amakela@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/18 20:06:32 by amakela           #+#    #+#              #
-#    Updated: 2024/01/26 16:19:21 by amakela          ###   ########.fr        #
+#    Updated: 2024/01/31 15:45:36 by amakela          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ all: $(NAME)
 $(NAME): $(OFILES)
 	make -C $(LIBFTDIR)
 	$(CC) $(CFLAGS) -o push_swap $(OFILES) $(LIBFTDIR)/$(LIBFT)
-	./push_swap -94837269 -98437 9249327 -29183 -231 -7 2147483647 -824  5 5453 68 685  -6 -2147483648 -95 0 286
+	./push_swap 5 2 7 1 6 3 9 4 8
 
 clean:
 	rm -f $(OFILES)

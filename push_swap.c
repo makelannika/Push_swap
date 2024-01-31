@@ -6,16 +6,16 @@
 /*   By: amakela <amakela@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 17:13:34 by amakela           #+#    #+#             */
-/*   Updated: 2024/01/26 16:25:38 by amakela          ###   ########.fr       */
+/*   Updated: 2024/01/31 16:04:16 by amakela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 #include "push_swap.h"
 
-void	push_swap(t_stack_node **a)
+void	push_swap(t_node **a)
 {
-	t_stack_node	*b;
+	t_node	*b;
 
 	b = NULL;
 	if (is_sorted(*a))

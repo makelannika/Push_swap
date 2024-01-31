@@ -6,7 +6,7 @@
 /*   By: amakela <amakela@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 19:52:34 by amakela           #+#    #+#             */
-/*   Updated: 2024/01/30 13:43:36 by amakela          ###   ########.fr       */
+/*   Updated: 2024/01/31 16:42:10 by amakela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "push_swap.h"
 #include <limits.h>
 
-int	is_sorted(t_stack_node *a)
+int	is_sorted(t_node *a)
 {
 	while (a->next != NULL)
 	{
@@ -26,7 +26,7 @@ int	is_sorted(t_stack_node *a)
 	return (1);
 }
 
-int	find_smallest(t_stack_node *node)
+int	find_smallest(t_node *node)
 {
 	int	index;
 	int	smallest;
@@ -45,7 +45,7 @@ int	find_smallest(t_stack_node *node)
 	return (index);
 }
 
-int	find_greatest(t_stack_node *node)
+int	find_greatest(t_node *node)
 {
 	int	index;
 	int	greatest;
@@ -64,15 +64,15 @@ int	find_greatest(t_stack_node *node)
 	return (index);
 }
 
-int	target_idx_a(t_stack_node *dest, int value)
+int	target_idx_a(t_node *dest, int value)
 {
-	t_stack_node	*curr;
-	unsigned int	difference;
 	int				index;
+	t_node			*curr;
+	unsigned int	difference;
 
 	index = 0;
-	difference = UINT_MAX;
 	curr = dest;
+	difference = UINT_MAX;
 	while (curr != NULL)
 	{
 		if ((curr->value > value)
@@ -88,15 +88,15 @@ int	target_idx_a(t_stack_node *dest, int value)
 	return (index);
 }
 
-int	target_idx_b(t_stack_node *dest, int value)
+int	target_idx_b(t_node *dest, int value)
 {
-	t_stack_node	*curr;
-	unsigned int	difference;
 	int				index;
+	t_node			*curr;
+	unsigned int	difference;
 
 	index = 0;
-	difference = UINT_MAX;
 	curr = dest;
+	difference = UINT_MAX;
 	while (curr != NULL)
 	{
 		if ((curr->value < value)
@@ -110,35 +110,4 @@ int	target_idx_b(t_stack_node *dest, int value)
 	if (difference == UINT_MAX)
 		index = find_greatest(dest);
 	return (index);
-}
-
-t_stack_node	*get_target_node(t_stack_node *target, int index)
-{
-	while (index > 0)
-	{
-		target = target->next;
-		index--;
-	}
-	return (target);
-}
-
-t_stack_node	*get_node_to_push(t_stack_node *node)
-{
-	int				index;
-	int				ops;
-	t_stack_node	*curr;
-
-	index = 0;
-	curr = node;
-	ops = node->total_ops;
-	while (curr != NULL)
-	{
-		if (curr->total_ops < ops)
-		{
-			index = curr->index;
-			ops = curr->total_ops;
-		}
-		curr = curr->next;
-	}
-	return (get_target_node(node, index));
 }

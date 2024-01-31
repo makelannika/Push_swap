@@ -6,16 +6,16 @@
 /*   By: amakela <amakela@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 14:07:51 by amakela           #+#    #+#             */
-/*   Updated: 2024/01/30 18:33:21 by amakela          ###   ########.fr       */
+/*   Updated: 2024/01/31 17:12:37 by amakela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 #include "push_swap.h"
 
-void	sort(t_stack_node **a, t_stack_node **b)
+void	sort(t_node **a, t_node **b)
 {
-	t_stack_node	*smallest;
+	t_node	*smallest;
 
 	smallest = NULL;
 	push(a, b);
@@ -32,18 +32,4 @@ void	sort(t_stack_node **a, t_stack_node **b)
 		smallest = get_target_node(*a, find_smallest(*a));
 		rot_one(a, smallest->above_median, smallest->rot_count, 'a');
 	}
-}
-
-void	count_and_push(t_stack_node **src, t_stack_node **dst, char s, char d)
-{
-	set_values(*src);
-	set_values(*dst);
-	if (s == 'a')
-		set_target_b(*src, *dst);
-	else
-		set_target_a(*src, *dst);
-	set_total_ops(*src, *dst);
-	rotation(src, dst, s, d);
-	push(src, dst);
-	ft_printf("p%c\n", d);
 }

@@ -6,13 +6,13 @@
 /*   By: amakela <amakela@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 15:35:43 by amakela           #+#    #+#             */
-/*   Updated: 2024/01/26 14:43:29 by amakela          ###   ########.fr       */
+/*   Updated: 2024/01/31 16:04:08 by amakela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	swap(t_stack_node *node)
+void	swap(t_node *node)
 {
 	int	temp;
 
@@ -25,10 +25,10 @@ void	swap(t_stack_node *node)
 	}
 }
 
-void	rotate(t_stack_node **node)
+void	rotate(t_node **node)
 {
-	t_stack_node	*current;
-	t_stack_node	*second;
+	t_node	*current;
+	t_node	*second;
 
 	if (*node == NULL)
 		return ;
@@ -43,9 +43,9 @@ void	rotate(t_stack_node **node)
 	*node = second;
 }
 
-void	reverse_rotate(t_stack_node **node)
+void	reverse_rotate(t_node **node)
 {
-	t_stack_node	*current;
+	t_node	*current;
 
 	if (*node == NULL)
 		return ;
@@ -59,10 +59,10 @@ void	reverse_rotate(t_stack_node **node)
 	*node = current;
 }
 
-void	push(t_stack_node **src, t_stack_node **dest)
+void	push(t_node **src, t_node **dest)
 {
-	t_stack_node	*first;
-	t_stack_node	*second;
+	t_node	*first;
+	t_node	*second;
 
 	if (*src == NULL)
 		return ;

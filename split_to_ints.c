@@ -6,7 +6,7 @@
 /*   By: amakela <amakela@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 14:43:41 by amakela           #+#    #+#             */
-/*   Updated: 2024/01/21 17:45:01 by amakela          ###   ########.fr       */
+/*   Updated: 2024/01/31 15:50:31 by amakela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "push_swap.h"
 #include <limits.h>
 
-static int	fill_array(int *array, char const *str, char delimiter);
+static void	fill_array(int *array, char const *str, char delimiter);
 
 int	*split_to_ints(char *str, char delimiter)
 {
@@ -31,13 +31,13 @@ int	*split_to_ints(char *str, char delimiter)
 	array = malloc(sizeof(int) * count);
 	if (!array)
 		return (NULL);
-	if (!fill_array(array, str, delimiter))
+	fill_array(array, str, delimiter);
+	if (!array)
 		return (NULL);
 	if (find_duplicates(array, count))
 	{
 		free_array(array);
 		return (error_message());
-		ft_printf("here\n");
 	}
 	return (array);
 }
@@ -61,7 +61,7 @@ int	num_count(char const *str, char delimiter)
 	return (count);
 }
 
-static int	fill_array(int *array, char const *str, char delimiter)
+static void	fill_array(int *array, char const *str, char delimiter)
 {
 	int		i;
 	int		j;
@@ -82,13 +82,12 @@ static int	fill_array(int *array, char const *str, char delimiter)
 		{
 			nbr = ft_atol(ft_substr(str, i - strl, strl));
 			if (!overflow_check(nbr, array))
-				return (0);
+				return ;
 			array[j++] = (int)nbr;
 		}
 		while (str[i] && str[i] == delimiter)
 			i++;
 	}
-	return (1);
 }
 
 int	*free_array(int *array)

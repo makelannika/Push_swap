@@ -6,20 +6,20 @@
 /*   By: amakela <amakela@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 14:35:45 by amakela           #+#    #+#             */
-/*   Updated: 2024/01/26 16:46:56 by amakela          ###   ########.fr       */
+/*   Updated: 2024/01/31 16:53:03 by amakela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 #include "push_swap.h"
 
-void	set_values(t_stack_node *node)
+void	set_values(t_node *node)
 {
 	set_indices(node);
 	set_position(node);
 }
 
-void	set_indices(t_stack_node *node)
+void	set_indices(t_node *node)
 {
 	int	index;
 
@@ -32,7 +32,7 @@ void	set_indices(t_stack_node *node)
 	}
 }
 
-void	set_position(t_stack_node *node)
+void	set_position(t_node *node)
 {
 	int	length;
 
@@ -54,27 +54,29 @@ void	set_position(t_stack_node *node)
 	}
 }
 
-void	set_target_a(t_stack_node *src, t_stack_node *dst)
+void	set_targets(t_node *src, t_node *dst, char d)
 {
-	while (src != NULL)
+	if (d == 'a')
 	{
-		src->target = target_idx_a(dst, src->value);
-		src = src->next;
+		while (src != NULL)
+		{
+			src->target = target_idx_a(dst, src->value);
+			src = src->next;
+		}
+	}
+	else
+	{
+		while (src != NULL)
+		{
+			src->target = target_idx_b(dst, src->value);
+			src = src->next;
+		}
 	}
 }
 
-void	set_target_b(t_stack_node *src, t_stack_node *dst)
+void	set_total_ops(t_node *src, t_node *dst)
 {
-	while (src != NULL)
-	{
-		src->target = target_idx_b(dst, src->value);
-		src = src->next;
-	}
-}
-
-void	set_total_ops(t_stack_node *src, t_stack_node *dst)
-{
-	t_stack_node	*target;
+	t_node	*target;
 
 	target = NULL;
 	while (src != NULL)

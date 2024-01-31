@@ -6,18 +6,18 @@
 /*   By: amakela <amakela@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 18:33:16 by amakela           #+#    #+#             */
-/*   Updated: 2024/01/26 16:46:54 by amakela          ###   ########.fr       */
+/*   Updated: 2024/01/31 17:13:01 by amakela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 #include "push_swap.h"
 
-void	rotation(t_stack_node **src, t_stack_node **dst, char s, char d)
+void	rotation(t_node **src, t_node **dst, char s, char d)
 {
-	t_stack_node	*to_push;
-	t_stack_node	*target;
-	int				times;
+	t_node	*to_push;
+	t_node	*target;
+	int		times;
 
 	to_push = get_node_to_push(*src);
 	target = get_target_node(*dst, to_push->target);
@@ -40,7 +40,38 @@ void	rotation(t_stack_node **src, t_stack_node **dst, char s, char d)
 	}
 }
 
-void	rot_one(t_stack_node **node, int above, int times, char stack)
+t_node	*get_node_to_push(t_node *node)
+{
+	int		ops;
+	int		index;
+	t_node	*curr;
+
+	index = 0;
+	curr = node;
+	ops = node->total_ops;
+	while (curr != NULL)
+	{
+		if (curr->total_ops < ops)
+		{
+			index = curr->index;
+			ops = curr->total_ops;
+		}
+		curr = curr->next;
+	}
+	return (get_target_node(node, index));
+}
+
+t_node	*get_target_node(t_node *target, int index)
+{
+	while (index > 0)
+	{
+		target = target->next;
+		index--;
+	}
+	return (target);
+}
+
+void	rot_one(t_node **node, int above, int times, char stack)
 {
 	while (times--)
 	{
@@ -57,7 +88,7 @@ void	rot_one(t_stack_node **node, int above, int times, char stack)
 	}
 }
 
-void	rot_two(t_stack_node **src, t_stack_node **dst, int above, int times)
+void	rot_two(t_node **src, t_node **dst, int above, int times)
 {
 	while (times--)
 	{

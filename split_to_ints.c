@@ -6,7 +6,7 @@
 /*   By: amakela <amakela@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 14:43:41 by amakela           #+#    #+#             */
-/*   Updated: 2024/01/31 15:50:31 by amakela          ###   ########.fr       */
+/*   Updated: 2024/02/01 22:49:34 by amakela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,6 @@ int	*split_to_ints(char *str, char delimiter)
 	if (!digit_check(str))
 		return (error_message());
 	count = num_count(str, delimiter);
-	if (count < 2)
-		return (NULL);
 	array = malloc(sizeof(int) * count);
 	if (!array)
 		return (NULL);
@@ -67,6 +65,7 @@ static void	fill_array(int *array, char const *str, char delimiter)
 	int		j;
 	int		strl;
 	long	nbr;
+	char	*string;
 
 	i = 0;
 	j = 0;
@@ -80,9 +79,11 @@ static void	fill_array(int *array, char const *str, char delimiter)
 		}
 		if (strl != 0)
 		{
-			nbr = ft_atol(ft_substr(str, i - strl, strl));
+			string = ft_substr(str, i - strl, strl);
+			nbr = ft_atol(string);
+			free(string);
 			if (!overflow_check(nbr, array))
-				return ;
+				exit(0);
 			array[j++] = (int)nbr;
 		}
 		while (str[i] && str[i] == delimiter)

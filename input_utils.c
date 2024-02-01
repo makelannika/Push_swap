@@ -6,7 +6,7 @@
 /*   By: amakela <amakela@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 13:52:05 by amakela           #+#    #+#             */
-/*   Updated: 2024/01/31 17:12:56 by amakela          ###   ########.fr       */
+/*   Updated: 2024/02/01 22:45:18 by amakela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	digit_check(char *str)
 	{
 		if (!(str[i] >= '0' && str[i] <= '9') && (str[i] != ' ')
 			&& (str[i] != '+') && (str[i] != '-'))
-			return (-1);
+			return (0);
 		i++;
 	}
 	return (1);
@@ -65,8 +65,12 @@ long	ft_atol(char *str)
 			sign = -1;
 		i ++;
 	}
+	if (!(str[i] >= '0' && str[i] <= '9'))
+		return (UINT_MAX);
 	while (str[i] >= '0' && str[i] <= '9')
 		nbr = 10 * nbr + str[i++] - '0';
+	if (str[i])
+		return (UINT_MAX);
 	return (nbr * sign);
 }
 

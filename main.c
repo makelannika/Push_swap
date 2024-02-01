@@ -6,7 +6,7 @@
 /*   By: amakela <amakela@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 14:24:18 by amakela           #+#    #+#             */
-/*   Updated: 2024/01/31 16:11:58 by amakela          ###   ########.fr       */
+/*   Updated: 2024/02/01 23:02:02 by amakela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ int	main(int argc, char **argv)
 	int		flag;
 
 	a = NULL;
-	flag = 0;
-	if (argc == 1)
+	flag = -1;
+	if (argc == 1 || argv[1][0] == '\0')
 		return (0);
 	if (argc > 2)
 	{

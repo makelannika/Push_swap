@@ -6,7 +6,7 @@
 /*   By: amakela <amakela@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 13:52:05 by amakela           #+#    #+#             */
-/*   Updated: 2024/02/01 22:45:18 by amakela          ###   ########.fr       */
+/*   Updated: 2024/02/03 21:14:33 by amakela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,26 @@ int	digit_check(char *str)
 	i = 0;
 	while (str[i])
 	{
-		if (!(str[i] >= '0' && str[i] <= '9') && (str[i] != ' ')
-			&& (str[i] != '+') && (str[i] != '-'))
-			return (0);
-		i++;
+		if (!ft_isdigit(str[i]) && str[i] != ' ' 
+			&& str[i] != '+' && str[i] != '-')
+		{
+			error_message();
+			return (-1);
+		}
+		if (ft_isdigit(str[i]) || str[i] ==  ' ')
+			i++;
+		if (str[i] == '+' || str[i] == '-')
+		{
+			if (!(ft_isdigit(str[i + 1])))
+			{
+				error_message();
+				return (-1);
+			}
+			else
+				i++;
+		}
 	}
-	return (1);
+	return (1);	
 }
 
 long	ft_atol(char *str)
@@ -65,27 +79,22 @@ long	ft_atol(char *str)
 			sign = -1;
 		i ++;
 	}
-	if (!(str[i] >= '0' && str[i] <= '9'))
-		return (UINT_MAX);
 	while (str[i] >= '0' && str[i] <= '9')
 		nbr = 10 * nbr + str[i++] - '0';
-	if (str[i])
-		return (UINT_MAX);
 	return (nbr * sign);
 }
 
-int	overflow_check(long nbr, int *array)
+int	overflow_check(long nbr)
 {
 	if (nbr < INT_MIN || nbr > INT_MAX)
 	{
-		free_array(array);
 		error_message();
-		return (0);
+		return (-1);
 	}
 	return (1);
 }
 
-int	find_duplicates(int *array, int count)
+int	duplicate_check(int *array, int count)
 {
 	int	i;
 	int	j;
@@ -97,10 +106,14 @@ int	find_duplicates(int *array, int count)
 		while (j < count)
 		{
 			if (array[i] == array[j++])
-				return (1);
+			{
+				free(array);
+				error_message();
+				return (-1);
+			}
 		}
 		i++;
 		j = i + 1;
 	}
-	return (0);
+	return (1);
 }

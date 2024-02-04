@@ -6,7 +6,7 @@
 /*   By: amakela <amakela@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 13:26:42 by amakela           #+#    #+#             */
-/*   Updated: 2024/01/31 17:12:58 by amakela          ###   ########.fr       */
+/*   Updated: 2024/02/03 16:30:24 by amakela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int	stack_length(t_node *a)
 
 void	free_stack(t_node **a)
 {
-	if (*a == NULL)
+	if (a == NULL || *a == NULL)
 		return ;
 	while ((*a)->next != NULL)
 	{

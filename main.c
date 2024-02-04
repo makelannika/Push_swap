@@ -6,7 +6,7 @@
 /*   By: amakela <amakela@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 14:24:18 by amakela           #+#    #+#             */
-/*   Updated: 2024/02/01 23:02:02 by amakela          ###   ########.fr       */
+/*   Updated: 2024/02/03 21:12:54 by amakela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,32 +14,30 @@
 #include "push_swap.h"
 #include <stdio.h>
 
-static int	free_memory(char *str, t_node **a, int flag);
+static int	free_memory(char *input, int *values, t_node **a);
 
 int	main(int argc, char **argv)
 {
 	t_node	*a;
 	char	*input;
 	int		*values;
-	int		flag;
 
 	a = NULL;
-	flag = -1;
 	if (argc == 1 || argv[1][0] == '\0')
 		return (0);
 	if (argc > 2)
-	{
 		input = args_to_str(argc, argv);
-		flag = 1;
-	}
 	else
-		input = argv[1];
+		input = ft_strdup(argv[1]);
 	values = split_to_ints(input, 32);
 	if (!values)
-		return (free_memory(input, &a, flag));
+	{
+		free(input);
+		return (0);
+	}
 	create_stack(&a, values, num_count(input, 32));
 	push_swap(&a);
-	free_memory(input, &a, flag);
+	free_memory(input, values, &a);
 	return (0);
 }
 
@@ -49,10 +47,10 @@ int	*error_message(void)
 	return (NULL);
 }
 
-static int	free_memory(char *str, t_node **a, int flag)
+static int	free_memory(char *input, int *values, t_node **a)
 {
-	if (flag)
-		free(str);
+	free(input);
+	free(values);
 	free_stack(a);
 	return (0);
 }

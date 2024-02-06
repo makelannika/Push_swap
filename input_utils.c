@@ -21,7 +21,7 @@ char	*args_to_str(int argc, char **argv)
 	char	*temp;
 
 	i = 1;
-	str = 0;
+	str = ft_strjoin("", argv[i++]);
 	while (i < argc)
 	{
 		temp = str;
@@ -46,8 +46,6 @@ int	digit_check(char *str)
 			error_message();
 			return (-1);
 		}
-		if (ft_isdigit(str[i]) || str[i] ==  ' ')
-			i++;
 		if (str[i] == '+' || str[i] == '-')
 		{
 			if (!(ft_isdigit(str[i + 1])))
@@ -55,9 +53,8 @@ int	digit_check(char *str)
 				error_message();
 				return (-1);
 			}
-			else
-				i++;
 		}
+		i++;
 	}
 	return (1);	
 }

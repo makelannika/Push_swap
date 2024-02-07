@@ -40,23 +40,18 @@ int	digit_check(char *str)
 	i = 0;
 	while (str[i])
 	{
-		if (!ft_isdigit(str[i]) && str[i] != ' ' 
+		if (!ft_isdigit(str[i]) && str[i] != ' '
 			&& str[i] != '+' && str[i] != '-')
-		{
-			error_message();
-			return (-1);
-		}
-		if (str[i] == '+' || str[i] == '-')
-		{
-			if (!(ft_isdigit(str[i + 1])))
-			{
-				error_message();
-				return (-1);
-			}
-		}
+			return (error_message());
+		if ((ft_isdigit(str[i])) && (!ft_isdigit(str[i + 1])
+				&& str[i + 1] != ' ' && str[i + 1] != '\0'))
+			return (error_message());
+		if ((str[i] == '+' || str[i] == '-')
+			&& (!(ft_isdigit(str[i + 1]))))
+			return (error_message());
 		i++;
 	}
-	return (1);	
+	return (1);
 }
 
 long	ft_atol(char *str)
@@ -68,7 +63,7 @@ long	ft_atol(char *str)
 	i = 0;
 	nbr = 0;
 	sign = 1;
-	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
+	while (str[i] == 32)
 		i ++;
 	if ((str[i] == '-') || (str[i] == '+'))
 	{

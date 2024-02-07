@@ -23,8 +23,10 @@ int	main(int argc, char **argv)
 	int		*values;
 
 	a = NULL;
-	if (argc == 1 || argv[1][0] == '\0')
+	if (argc == 1)
 		return (0);
+	if (argv[1][0] == '\0')
+		return (error_message());
 	if (argc > 2)
 		input = args_to_str(argc, argv);
 	else
@@ -41,10 +43,10 @@ int	main(int argc, char **argv)
 	return (0);
 }
 
-int	*error_message(void)
+int	error_message(void)
 {
 	write(2, "Error\n", 6);
-	return (NULL);
+	return (-1);
 }
 
 static int	free_memory(char *input, int *values, t_node **a)

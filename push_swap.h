@@ -36,7 +36,7 @@ long		ft_atol(char *str);
 int			duplicate_check(int *array, int count);
 int			overflow_check(long nbr);
 int			*free_array(int *array);
-int			*error_message(void);
+int			error_message(void);
 void		create_stack(t_node **a, int *values, int size);
 t_node		*create_node(int value);
 void		add_front(t_node **a, t_node *node);

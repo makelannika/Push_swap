@@ -33,7 +33,7 @@ int	*split_to_ints(char *str, char delimiter)
 	if (!fill_array(array, str, delimiter))
 		return (NULL);
 	if (count == 1)
-		return (NULL);
+		return (free_array(array));
 	if (duplicate_check(array, count) == -1)
 		return (NULL);
 	return (array);
@@ -49,11 +49,11 @@ int	num_count(char const *str, char delimiter)
 	while (str[i])
 	{
 		while (str[i] == delimiter)
-			i ++;
+			i++;
 		if (str[i] && str[i] != delimiter)
-			count ++;
+			count++;
 		while (str[i] && str[i] != delimiter)
-			i ++;
+			i++;
 	}
 	return (count);
 }
@@ -64,7 +64,7 @@ static int	*fill_array(int *array, char const *str, char delimiter)
 	int		j;
 	int		strl;
 	long	nbr;
-	char	*string;
+	char	*nbr_string;
 
 	i = 0;
 	j = 0;
@@ -78,11 +78,11 @@ static int	*fill_array(int *array, char const *str, char delimiter)
 		}
 		if (strl != 0)
 		{
-			string = ft_substr(str, i - strl, strl);
-			if (string == NULL)
+			nbr_string = ft_substr(str, i - strl, strl);
+			if (nbr_string == NULL)
 				return (free_array(array));
-			nbr = ft_atol(string);
-			free(string);
+			nbr = ft_atol(nbr_string);
+			free(nbr_string);
 			if (overflow_check(nbr) == -1)
 				return (free_array(array));
 			array[j++] = (int)nbr;

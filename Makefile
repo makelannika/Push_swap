@@ -20,7 +20,8 @@ CC = gcc -g
 
 CFILES = main.c				input_utils.c		split_to_ints.c		stack_utils.c	\
 		 instructions.c		push_swap.c			push_swap_utils.c	sort_three.c	\
-		 sort_five.c		values_utils.c		rotation_utils.c	sort.c
+		 sort_five.c		values_utils.c		rotation_utils.c	sort.c			\
+		 error_checks.c
 
 OFILES = $(CFILES:.c=.o)
 

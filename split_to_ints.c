@@ -14,8 +14,8 @@
 #include "push_swap.h"
 #include <limits.h>
 
-static int	*fill_array(int *array, char const *str, char delimiter);
-// long		get_number(char const *str, int i, int strl);
+static int	*fill_array(int *array, char *str, char delimiter);
+static int	*add_value(int *array, char *str, int strl, int i);
 
 int	*split_to_ints(char *str, char delimiter)
 {
@@ -39,7 +39,7 @@ int	*split_to_ints(char *str, char delimiter)
 	return (array);
 }
 
-int	num_count(char const *str, char delimiter)
+int	num_count(char *str, char delimiter)
 {
 	int	i;
 	int	count;
@@ -58,13 +58,11 @@ int	num_count(char const *str, char delimiter)
 	return (count);
 }
 
-static int	*fill_array(int *array, char const *str, char delimiter)
+static int	*fill_array(int *array, char *str, char delimiter)
 {
 	int		i;
 	int		j;
 	int		strl;
-	long	nbr;
-	char	*nbr_string;
 
 	i = 0;
 	j = 0;
@@ -78,14 +76,8 @@ static int	*fill_array(int *array, char const *str, char delimiter)
 		}
 		if (strl != 0)
 		{
-			nbr_string = ft_substr(str, i - strl, strl);
-			if (nbr_string == NULL)
-				return (free_array(array));
-			nbr = ft_atol(nbr_string);
-			free(nbr_string);
-			if (overflow_check(nbr) == -1)
-				return (free_array(array));
-			array[j++] = (int)nbr;
+			if (!add_value(array, str, strl, i))
+				return (NULL);
 		}
 		while (str[i] && str[i] == delimiter)
 			i++;
@@ -93,16 +85,22 @@ static int	*fill_array(int *array, char const *str, char delimiter)
 	return (array);
 }
 
-// long	get_number(char const *str, int i, int strl)
-// {
-// 	long	nbr;
-// 	char	*string;
+static int	*add_value(int *array, char *str, int strl, int i)
+{
+	static int	j = 0;
+	char		*nbr_str;
+	long		nbr;
 
-// 	string = ft_substr(str, i - strl, strl);
-// 	nbr = ft_atol(string);
-// 	free(string);
-// 	return (nbr);
-// }
+	nbr_str = ft_substr(str, i - strl, strl);
+	if (nbr_str == NULL)
+		return (free_array(array));
+	nbr = ft_atol(nbr_str);
+	free(nbr_str);
+	if (overflow_check(nbr) == -1)
+		return (free_array(array));
+	array[j++] = (int)nbr;
+	return (array);
+}
 
 int	*free_array(int *array)
 {

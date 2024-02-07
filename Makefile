@@ -32,7 +32,7 @@ all: $(NAME)
 $(NAME): $(OFILES)
 	make -C $(LIBFTDIR)
 	$(CC) $(CFLAGS) -o push_swap $(OFILES) $(LIBFTDIR)/$(LIBFT)
-	./push_swap 0 0
+	./push_swap ""
 
 clean:
 	rm -f $(OFILES)

@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
 #include "push_swap.h"
 
 void	rotation(t_node **src, t_node **dst, char s, char d)
@@ -21,12 +20,12 @@ void	rotation(t_node **src, t_node **dst, char s, char d)
 
 	to_push = get_node_to_push(*src);
 	target = get_target_node(*dst, to_push->target);
-	if (to_push->rot_count < target->rot_count)
-		times = to_push->rot_count;
-	else
-		times = target->rot_count;
 	if (to_push->above_median == target->above_median)
 	{
+		if (to_push->rot_count < target->rot_count)
+			times = to_push->rot_count;
+		else
+			times = target->rot_count;
 		rot_two(src, dst, to_push->above_median, times);
 		if (to_push->rot_count > target->rot_count)
 			rot_one(src, to_push->above_median, to_push->rot_count - times, s);
@@ -61,14 +60,14 @@ t_node	*get_node_to_push(t_node *node)
 	return (get_target_node(node, index));
 }
 
-t_node	*get_target_node(t_node *target, int index)
+t_node	*get_target_node(t_node *dst, int index)
 {
 	while (index > 0)
 	{
-		target = target->next;
+		dst = dst->next;
 		index--;
 	}
-	return (target);
+	return (dst);
 }
 
 void	rot_one(t_node **node, int above, int times, char stack)

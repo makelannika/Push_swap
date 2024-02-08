@@ -13,7 +13,7 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include <unistd.h>
+# include "libft/libft.h"
 # include <stdlib.h>
 
 typedef struct node
@@ -47,11 +47,11 @@ void		swap(t_node *node);
 void		rotate(t_node **node);
 void		reverse_rotate(t_node **node);
 void		push(t_node **src, t_node **dest);
-void		push_swap(t_node **a);
+// void		push_swap(t_node **a);
 int			is_sorted(t_node *a);
-void		sort_three(t_node **node, char stack);
-void		sort_five(t_node **a, t_node **b);
-void		sort(t_node **a, t_node **b);
+void		sort_three(t_node **node);
+// void		sort_five(t_node **a, t_node **b);
+void		sort(t_node **a);
 int			find_smallest(t_node *node);
 int			find_greatest(t_node *node);
 int			target_idx_a(t_node *node, int value);
@@ -61,11 +61,10 @@ void		set_indices(t_node *node);
 void		set_position(t_node *node);
 void		set_targets(t_node *src, t_node *dst, char d);
 void		set_total_ops(t_node *src, t_node *target);
-t_node		*get_target_node(t_node *target, int index);
+t_node		*get_target_node(t_node *dst, int index);
 t_node		*get_node_to_push(t_node *node);
 void		rotation(t_node **src, t_node **dst, char s, char d);
 void		rot_one(t_node **node, int above, int times, char stack);
 void		rot_two(t_node **src, t_node **dst, int above, int times);
-void		count_and_push(t_node **src, t_node **dst, char s, char d);
 
 #endif

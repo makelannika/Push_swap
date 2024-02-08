@@ -10,9 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
 #include "push_swap.h"
-#include <stdio.h>
+#include <unistd.h>
 
 static int	free_memory(char *input, int *values, t_node **a);
 
@@ -38,7 +37,7 @@ int	main(int argc, char **argv)
 		return (0);
 	}
 	create_stack(&a, values, num_count(input, 32));
-	push_swap(&a);
+	sort(&a);
 	free_memory(input, values, &a);
 	return (0);
 }

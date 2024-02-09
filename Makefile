@@ -19,7 +19,7 @@ LIBFTDIR = libft
 CC = cc
 
 CFILES = push_swap.c		input_utils.c		split_to_ints.c		stack_utils.c	\
-		 instructions.c		push_swap_utils.c	sort_three.c		values_utils.c	\
+		 instructions.c		sorting_utils.c		sort_three.c		values_utils.c	\
 		 rotation_utils.c	sort.c				error_checks.c
 
 OFILES = $(CFILES:.c=.o)

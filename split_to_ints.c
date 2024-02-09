@@ -5,13 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: amakela <amakela@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/02 14:43:41 by amakela           #+#    #+#             */
-/*   Updated: 2024/02/03 21:14:31 by amakela          ###   ########.fr       */
+/*   Created: 2024/02/09 15:27:27 by amakela           #+#    #+#             */
+/*   Updated: 2024/02/09 15:27:30 by amakela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <limits.h>
 
 static int	*fill_array(int *array, char *str, char delimiter);
 static int	*add_value(int *array, char *str, int strl, int i);

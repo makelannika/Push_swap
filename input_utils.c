@@ -5,13 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: amakela <amakela@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/17 13:52:05 by amakela           #+#    #+#             */
-/*   Updated: 2024/02/03 21:14:33 by amakela          ###   ########.fr       */
+/*   Created: 2024/02/09 15:24:43 by amakela           #+#    #+#             */
+/*   Updated: 2024/02/09 15:24:47 by amakela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <limits.h>
 
 char	*args_to_str(int argc, char **argv)
 {

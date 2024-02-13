@@ -13,8 +13,6 @@
 #include "push_swap.h"
 #include <unistd.h>
 
-static int	free_memory(char *input, int *values, t_node **a);
-
 int	main(int argc, char **argv)
 {
 	t_node	*a;
@@ -42,16 +40,3 @@ int	main(int argc, char **argv)
 	return (0);
 }
 
-int	error_message(void)
-{
-	write(2, "Error\n", 6);
-	return (-1);
-}
-
-static int	free_memory(char *input, int *values, t_node **a)
-{
-	free(input);
-	free(values);
-	free_stack(a);
-	return (0);
-}

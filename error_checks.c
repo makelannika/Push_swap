@@ -67,3 +67,17 @@ int	duplicate_check(int *array, int count)
 	}
 	return (1);
 }
+
+int	error_message(void)
+{
+	write(2, "Error\n", 6);
+	return (-1);
+}
+
+int	free_memory(char *input, int *values, t_node **a)
+{
+	free(input);
+	free(values);
+	free_stack(a);
+	return (0);
+}

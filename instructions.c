@@ -30,7 +30,7 @@ void	rotate(t_node **node)
 	t_node	*current;
 	t_node	*second;
 
-	if (*node == NULL)
+	if (stack_length(*node) < 2)
 		return ;
 	current = *node;
 	second = current->next;
@@ -47,7 +47,7 @@ void	reverse_rotate(t_node **node)
 {
 	t_node	*current;
 
-	if (*node == NULL)
+	if (stack_length(*node) < 2)
 		return ;
 	current = *node;
 	while (current->next != NULL)

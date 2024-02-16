@@ -26,32 +26,35 @@ void	swaps(char *instruction, t_node **a, t_node *b)
 	}
 }
 
-void	pushes(char *instruction, t_node **a, t_node *b)
+void	pushes(char *instruction, t_node **a, t_node **b)
 {
+	
 	if (ft_strncmp(instruction, "pa", 2) == 0)
-		push(&b, a);
+		{
+			push(b, a);
+		}
 	else if (ft_strncmp(instruction, "pb", 2) == 0)
-		push(a, &b);
+		push(a, b);
 }
 
-void	rotations(char *instruction, t_node **a, t_node *b)
+void	rotations(char *instruction, t_node **a, t_node **b)
 {
 	if (ft_strncmp(instruction, "ra", 2) == 0)
 		rotate(a);
 	else if (ft_strncmp(instruction, "rb", 2) == 0)
-		rotate(&b);
+		rotate(b);
 	else if (ft_strncmp(instruction, "rr", 3) == 0)
 	{
 		rotate(a);
-		rotate(&b);
+		rotate(b);
 	}
 	else if (ft_strncmp(instruction, "rra", 3) == 0)
 		reverse_rotate(a);
 	else if (ft_strncmp(instruction, "rrb", 3) == 0)
-		reverse_rotate(&b);
+		reverse_rotate(b);
 	else if (ft_strncmp(instruction, "rrr", 3) == 0)
 	{
 		reverse_rotate(a);
-		reverse_rotate(&b);
+		reverse_rotate(b);
 	}
 }

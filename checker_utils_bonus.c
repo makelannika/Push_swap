@@ -28,11 +28,10 @@ void	swaps(char *instruction, t_node **a, t_node *b)
 
 void	pushes(char *instruction, t_node **a, t_node **b)
 {
-	
 	if (ft_strncmp(instruction, "pa", 2) == 0)
-		{
-			push(b, a);
-		}
+	{
+		push(b, a);
+	}
 	else if (ft_strncmp(instruction, "pb", 2) == 0)
 		push(a, b);
 }

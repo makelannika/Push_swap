@@ -28,6 +28,8 @@ int	main(int argc, char **argv)
 		input = args_to_str(argc, argv);
 	else
 		input = ft_strdup(argv[1]);
+	if (input == NULL)
+		return (0);
 	values = split_to_ints(input, 32);
 	if (!values)
 	{
@@ -39,4 +41,3 @@ int	main(int argc, char **argv)
 	free_memory(input, values, &a);
 	return (0);
 }
-

@@ -31,6 +31,8 @@ int	digit_check(char *str)
 			return (error_message());
 		i++;
 	}
+	if (!ft_isdigit(str[i - 1]))
+		return (error_message());
 	return (1);
 }
 

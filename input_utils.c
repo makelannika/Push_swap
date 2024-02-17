@@ -12,6 +12,31 @@
 
 #include "push_swap.h"
 
+static int	num_check(int argc, char **argv)
+{
+	int	j;
+	int	i;
+
+	j = 0;
+	i = 1;
+	while (i < argc)
+	{
+		if (argv[i][j] == '\0')
+			return (-1);
+		if ((argv[i][j] == '-' || argv[i][j] == '+')
+		&& (argv[i][j + 1] != '\0'))
+			j++;
+		while (argv[i][j])
+		{
+			if (!ft_isdigit(argv[i][j++]))
+				return (-1);
+		}
+		i++;
+		j = 0;
+	}
+	return (1);
+}
+
 char	*args_to_str(int argc, char **argv)
 {
 	int		i;
@@ -19,6 +44,11 @@ char	*args_to_str(int argc, char **argv)
 	char	*temp;
 
 	i = 1;
+	if (num_check(argc, argv) == -1)
+	{
+		error_message();
+		return (NULL);
+	}
 	str = space_join("", argv[i++]);
 	while (i < argc)
 	{

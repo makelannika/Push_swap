@@ -15,6 +15,8 @@
 
 int	is_sorted(t_node *a)
 {
+	if (a == NULL)
+		return (1);
 	while (a->next != NULL)
 	{
 		if (a->value < a->next->value)

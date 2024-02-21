@@ -16,7 +16,7 @@ LIBFT = libft.a
 
 LIBFTDIR = libft
 
-CC = cc
+CC = cc -g3
 
 CFILES = input_utils.c		split_to_ints.c		stack_utils.c	\
 		 instructions.c		sorting_utils.c		sort_three.c	\
@@ -48,11 +48,12 @@ clean:
 	rm -f $(OFILES)
 	make -C $(LIBFTDIR) clean
 	rm -f $(BOFILES)
-	rm -f .bonus
 
 fclean: clean
 	rm -f $(NAME)
 	make -C $(LIBFTDIR) fclean
+	rm -f .bonus
+	rm -f checker
 
 re: fclean $(NAME)
 

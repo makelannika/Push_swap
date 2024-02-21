@@ -22,7 +22,7 @@ int	*split_to_ints(char *str, char delimiter)
 
 	if (!str)
 		return (NULL);
-	if (digit_check(str) == -1)
+	if (!digit_check(str))
 		return (NULL);
 	count = num_count(str, delimiter);
 	array = malloc(sizeof(int) * count);
@@ -30,9 +30,7 @@ int	*split_to_ints(char *str, char delimiter)
 		return (NULL);
 	if (!fill_array(array, str, delimiter))
 		return (NULL);
-	if (count == 1)
-		return (free_array(array));
-	if (duplicate_check(array, count) == -1)
+	if (!duplicate_check(array, count))
 		return (NULL);
 	return (array);
 }
@@ -94,7 +92,7 @@ static int	*add_value(int *array, char *str, int strl, int i)
 		return (free_array(array));
 	nbr = ft_atol(nbr_str);
 	free(nbr_str);
-	if (overflow_check(nbr) == -1)
+	if (!overflow_check(nbr))
 		return (free_array(array));
 	array[j++] = (int)nbr;
 	return (array);

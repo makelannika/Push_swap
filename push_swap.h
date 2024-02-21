@@ -66,7 +66,7 @@ void		rot_one(t_node **node, int above, int times, char stack);
 void		rot_two(t_node **src, t_node **dst, int above, int times);
 int			free_memory(char *input, int *values, t_node **a);
 void		swaps(char *instruction, t_node **a, t_node *b);
-void		pushes(char *instruction, t_node **a, t_node *b);
-void		rotations(char *instruction, t_node **a, t_node *b);
+void		pushes(char *instruction, t_node **a, t_node **b);
+void		rotations(char *instruction, t_node **a, t_node **b);
 
 #endif

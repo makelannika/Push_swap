@@ -54,8 +54,12 @@ void	checker(t_node **a)
 
 	arg_count = 0;
 	if (!read_instructions(&arg_count, &instructions))
+	{
+		if (is_sorted(*a))
+			ft_printf("OK\n");
 		return ;
-	if (execute(a, instructions, arg_count) == 1)
+	}
+	if (execute(a, instructions, arg_count))
 		ft_printf("OK\n");
 	else
 		ft_printf("KO\n");
@@ -68,13 +72,11 @@ char	**read_instructions(int *arg_count, char ***instructions)
 	char	*line;
 	char	*all;
 
-	all = (char *)ft_calloc(1, 1);
-	if (!all)
-		return (NULL);
+	all = NULL;
 	line = get_next_line(0);
 	while (line)
 	{
-		if (validity_check(line) == -1)
+		if (!validity_check(line))
 		{
 			free(line);
 			free(all);
@@ -113,7 +115,7 @@ int	validity_check(char *instr)
 	else
 	{
 		error_message();
-		return (-1);
+		return (0);
 	}
 }
 
@@ -137,5 +139,5 @@ int	execute(t_node **a, char **instructions, int arg_count)
 	if (is_sorted(*a) && b == NULL)
 		return (1);
 	free_stack(&b);
-	return (-1);
+	return (0);
 }

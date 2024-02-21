@@ -14,22 +14,21 @@
 
 static int	num_check(int argc, char **argv)
 {
-	int	j;
 	int	i;
+	int	j;
 
-	j = 0;
 	i = 1;
+	j = 0;
 	while (i < argc)
 	{
-		if (argv[i][j] == '\0')
-			return (-1);
-		if ((argv[i][j] == '-' || argv[i][j] == '+')
-		&& (argv[i][j + 1] != '\0'))
+		if (argv[i][j] == '-' || argv[i][j] == '+')
 			j++;
+		if (argv[i][j] == '\0')
+			return (0);
 		while (argv[i][j])
 		{
 			if (!ft_isdigit(argv[i][j++]))
-				return (-1);
+				return (0);
 		}
 		i++;
 		j = 0;
@@ -44,7 +43,7 @@ char	*args_to_str(int argc, char **argv)
 	char	*temp;
 
 	i = 1;
-	if (num_check(argc, argv) == -1)
+	if (!num_check(argc, argv))
 	{
 		error_message();
 		return (NULL);

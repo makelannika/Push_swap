@@ -76,5 +76,5 @@ void	free_stack(t_node **a)
 		free((*a)->prev);
 	}
 	free(*a);
-	*a = NULL;
+	a = NULL;
 }

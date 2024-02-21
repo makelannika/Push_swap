@@ -20,19 +20,17 @@ int	digit_check(char *str)
 	i = 0;
 	while (str[i])
 	{
-		if (!ft_isdigit(str[i]) && str[i] != ' '
-			&& str[i] != '+' && str[i] != '-')
+		if (str[i] == ' ')
+			i++;
+		if (str[i] == '-' || str[i] == '+')
+			i++;
+		if (!ft_isdigit(str[i]))
 			return (error_message());
-		if ((ft_isdigit(str[i])) && (!ft_isdigit(str[i + 1])
-				&& str[i + 1] != ' ' && str[i + 1] != '\0'))
+		while (ft_isdigit(str[i]))
+			i++;
+		if (str[i] != ' ' && str[i] != '\0')
 			return (error_message());
-		if ((str[i] == '+' || str[i] == '-')
-			&& (!(ft_isdigit(str[i + 1]))))
-			return (error_message());
-		i++;
 	}
-	if (!ft_isdigit(str[i - 1]))
-		return (error_message());
 	return (1);
 }
 
@@ -41,7 +39,7 @@ int	overflow_check(long nbr)
 	if (nbr < INT_MIN || nbr > INT_MAX)
 	{
 		error_message();
-		return (-1);
+		return (0);
 	}
 	return (1);
 }
@@ -61,7 +59,7 @@ int	duplicate_check(int *array, int count)
 			{
 				free(array);
 				error_message();
-				return (-1);
+				return (0);
 			}
 		}
 		i++;
@@ -73,7 +71,7 @@ int	duplicate_check(int *array, int count)
 int	error_message(void)
 {
 	write(2, "Error\n", 6);
-	return (-1);
+	return (0);
 }
 
 int	free_memory(char *input, int *values, t_node **a)

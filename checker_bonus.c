@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.c                                          :+:      :+:    :+:   */
+/*   checker_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amakela <amakela@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/09 16:18:01 by amakela           #+#    #+#             */
-/*   Updated: 2024/02/09 16:18:03 by amakela          ###   ########.fr       */
+/*   Created: 2024/02/22 15:44:25 by amakela           #+#    #+#             */
+/*   Updated: 2024/02/22 22:11:36 by amakela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 void	checker(t_node **a);
 char	**read_instructions(int *arg_count, char ***instructions);
-int		validity_check(char *instr);
+int		validity_check(char *line, char *all);
 int		execute(t_node **a, char **instructions, int arg_count);
 
 int	main(int argc, char **argv)
@@ -30,9 +30,9 @@ int	main(int argc, char **argv)
 	if (argv[1][0] == '\0')
 		return (error_message());
 	if (argc > 2)
-		input = args_to_str(argc, argv);
+		input = multiple_args(argc, argv);
 	else
-		input = ft_strdup(argv[1]);
+		input = single_arg(argv);
 	if (input == NULL)
 		return (0);
 	values = split_to_ints(input, 32);
@@ -55,7 +55,7 @@ void	checker(t_node **a)
 	arg_count = 0;
 	if (!read_instructions(&arg_count, &instructions))
 	{
-		if (is_sorted(*a))
+		if (*a && is_sorted(*a))
 			ft_printf("OK\n");
 		return ;
 	}
@@ -76,17 +76,15 @@ char	**read_instructions(int *arg_count, char ***instructions)
 	line = get_next_line(0);
 	while (line)
 	{
-		if (!validity_check(line))
-		{
-			free(line);
-			free(all);
+		if (!validity_check(line, all))
 			return (NULL);
-		}
 		temp = all;
 		all = ft_strjoin(all, line);
 		(*arg_count)++;
 		free(line);
 		free(temp);
+		if (!all)
+			return (NULL);
 		line = get_next_line(0);
 	}
 	*instructions = ft_split(all, '\n');
@@ -94,26 +92,28 @@ char	**read_instructions(int *arg_count, char ***instructions)
 	return (*instructions);
 }
 
-int	validity_check(char *instr)
+int	validity_check(char *line, char *all)
 {
-	if (ft_strncmp(instr, "sa\n", 3) == 0
-		|| ft_strncmp(instr, "sb\n", 3) == 0)
+	if (ft_strncmp(line, "sa\n", 3) == 0
+		|| ft_strncmp(line, "sb\n", 3) == 0)
 		return (1);
-	else if (ft_strncmp(instr, "pa\n", 3) == 0
-		|| ft_strncmp(instr, "pb\n", 3) == 0)
+	else if (ft_strncmp(line, "pa\n", 3) == 0
+		|| ft_strncmp(line, "pb\n", 3) == 0)
 		return (1);
-	else if (ft_strncmp(instr, "ra\n", 3) == 0
-		|| ft_strncmp(instr, "rb\n", 3) == 0)
+	else if (ft_strncmp(line, "ra\n", 3) == 0
+		|| ft_strncmp(line, "rb\n", 3) == 0)
 		return (1);
-	else if (ft_strncmp(instr, "rra\n", 4) == 0
-		|| ft_strncmp(instr, "rrb\n", 4) == 0)
+	else if (ft_strncmp(line, "rra\n", 4) == 0
+		|| ft_strncmp(line, "rrb\n", 4) == 0)
 		return (1);
-	else if (ft_strncmp(instr, "ss\n", 3) == 0
-		|| ft_strncmp(instr, "rr\n", 3) == 0
-		|| ft_strncmp(instr, "rrr\n", 4) == 0)
+	else if (ft_strncmp(line, "ss\n", 3) == 0
+		|| ft_strncmp(line, "rr\n", 3) == 0
+		|| ft_strncmp(line, "rrr\n", 4) == 0)
 		return (1);
 	else
 	{
+		free(line);
+		free(all);
 		error_message();
 		return (0);
 	}

@@ -22,8 +22,6 @@ int	*split_to_ints(char *str, char delimiter)
 
 	if (!str)
 		return (NULL);
-	if (!digit_check(str))
-		return (NULL);
 	count = num_count(str, delimiter);
 	array = malloc(sizeof(int) * count);
 	if (!array)

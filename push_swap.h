@@ -28,9 +28,11 @@ typedef struct node
 	struct node	*prev;
 }	t_node;
 
-char		*args_to_str(int argc, char **argv);
+char		*multiple_args(int argc, char **argv);
 char		*space_join(char const *s1, char const *s2);
-int			digit_check(char *str);
+char		*single_arg(char **argv);
+int			check_single(char *str);
+int			check_multiple(int argc, char **argv);
 int			*split_to_ints(char *str, char delimiter);
 int			num_count(char *str, char delimiter);
 long		ft_atol(char *str);

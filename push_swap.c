@@ -25,9 +25,9 @@ int	main(int argc, char **argv)
 	if (argv[1][0] == '\0')
 		return (error_message());
 	if (argc > 2)
-		input = args_to_str(argc, argv);
+		input = multiple_args(argc, argv);
 	else
-		input = ft_strdup(argv[1]);
+		input = single_arg(argv);
 	if (input == NULL)
 		return (0);
 	values = split_to_ints(input, 32);

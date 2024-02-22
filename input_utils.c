@@ -6,44 +6,20 @@
 /*   By: amakela <amakela@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 15:24:43 by amakela           #+#    #+#             */
-/*   Updated: 2024/02/09 15:24:47 by amakela          ###   ########.fr       */
+/*   Updated: 2024/02/22 22:06:06 by amakela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	num_check(int argc, char **argv)
-{
-	int	i;
-	int	j;
-
-	i = 1;
-	j = 0;
-	while (i < argc)
-	{
-		if (argv[i][j] == '-' || argv[i][j] == '+')
-			j++;
-		if (argv[i][j] == '\0')
-			return (0);
-		while (argv[i][j])
-		{
-			if (!ft_isdigit(argv[i][j++]))
-				return (0);
-		}
-		i++;
-		j = 0;
-	}
-	return (1);
-}
-
-char	*args_to_str(int argc, char **argv)
+char	*multiple_args(int argc, char **argv)
 {
 	int		i;
 	char	*str;
 	char	*temp;
 
 	i = 1;
-	if (!num_check(argc, argv))
+	if (!check_multiple(argc, argv))
 	{
 		error_message();
 		return (NULL);
@@ -51,11 +27,26 @@ char	*args_to_str(int argc, char **argv)
 	str = space_join("", argv[i++]);
 	while (i < argc)
 	{
+		if (!str)
+			return (NULL);
 		temp = str;
 		str = space_join(str, argv[i++]);
 		free(temp);
-		if (!str)
-			return (NULL);
+	}
+	return (str);
+}
+
+char	*single_arg(char **argv)
+{
+	char	*str;
+
+	str = ft_strdup(argv[1]);
+	if (!str)
+		return (NULL);
+	if (!check_single(str))
+	{
+		error_message();
+		return (NULL);
 	}
 	return (str);
 }
@@ -107,4 +98,12 @@ long	ft_atol(char *str)
 	while (str[i] >= '0' && str[i] <= '9')
 		nbr = 10 * nbr + str[i++] - '0';
 	return (nbr * sign);
+}
+
+int	free_memory(char *input, int *values, t_node **a)
+{
+	free(input);
+	free(values);
+	free_stack(a);
+	return (0);
 }

@@ -6,17 +6,23 @@
 #    By: amakela <amakela@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/18 20:06:32 by amakela           #+#    #+#              #
-#    Updated: 2024/02/03 21:14:22 by amakela          ###   ########.fr        #
+#    Updated: 2024/02/22 22:12:23 by amakela          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 
+BONUS = checker
+
 LIBFT = libft.a
 
 LIBFTDIR = libft
 
-CC = cc -g3
+CC = cc
+
+MAINC = push_swap.c
+
+MAINO = $(MAINC:.c=.o)
 
 CFILES = input_utils.c		split_to_ints.c		stack_utils.c	\
 		 instructions.c		sorting_utils.c		sort_three.c	\
@@ -33,26 +39,24 @@ CFLAGS = -Wall -Wextra -Werror
 
 all: $(NAME)
 
-$(NAME): $(OFILES)
+$(NAME): $(OFILES) $(MAINO)
 	make -C $(LIBFTDIR)
-	$(CC) $(CFLAGS) -o push_swap $(OFILES) $(LIBFTDIR)/$(LIBFT) push_swap.c
+	$(CC) $(CFLAGS) -o push_swap $(OFILES) $(MAINO) $(LIBFTDIR)/$(LIBFT)
 
-bonus: .bonus
+bonus: $(BONUS)
 
-.bonus: $(BOFILES) $(OFILES)
+$(BONUS): $(BOFILES) $(OFILES)
 	make -C $(LIBFTDIR)
 	$(CC) $(CFLAGS) -o checker $(BOFILES) $(OFILES) $(LIBFTDIR)/$(LIBFT)
-	@touch .bonus
 
 clean:
-	rm -f $(OFILES)
+	rm -f $(OFILES) $(MAINO)
 	make -C $(LIBFTDIR) clean
 	rm -f $(BOFILES)
 
 fclean: clean
 	rm -f $(NAME)
 	make -C $(LIBFTDIR) fclean
-	rm -f .bonus
 	rm -f checker
 
 re: fclean $(NAME)

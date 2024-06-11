@@ -6,7 +6,7 @@
 /*   By: amakela <amakela@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 15:35:29 by amakela           #+#    #+#             */
-/*   Updated: 2024/02/22 22:06:58 by amakela          ###   ########.fr       */
+/*   Updated: 2024/02/09 15:35:31 by amakela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	check_single(char *str)
 	i = 0;
 	while (str[i])
 	{
-		if (str[i] == ' ')
+		while (str[i] == ' ')
 			i++;
 		if (str[i] == '-' || str[i] == '+')
 			i++;
@@ -30,6 +30,8 @@ int	check_single(char *str)
 			i++;
 		if (str[i] != ' ' && str[i] != '\0')
 			return (0);
+		while (str[i] == ' ')
+			i++;
 	}
 	return (1);
 }
@@ -37,23 +39,13 @@ int	check_single(char *str)
 int	check_multiple(int argc, char **argv)
 {
 	int	i;
-	int	j;
 
 	i = 1;
-	j = 0;
 	while (i < argc)
 	{
-		if (argv[i][j] == '-' || argv[i][j] == '+')
-			j++;
-		if (argv[i][j] == '\0')
+		if (!check_single(argv[i]))
 			return (0);
-		while (argv[i][j])
-		{
-			if (!ft_isdigit(argv[i][j++]))
-				return (0);
-		}
 		i++;
-		j = 0;
 	}
 	return (1);
 }

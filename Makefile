@@ -6,36 +6,33 @@
 #    By: amakela <amakela@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/18 20:06:32 by amakela           #+#    #+#              #
-#    Updated: 2024/02/22 22:12:23 by amakela          ###   ########.fr        #
+#    Updated: 2024/02/27 19:05:49 by amakela          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = push_swap
+NAME		= push_swap
 
-BONUS = checker
+BONUS		= checker
 
-LIBFT = libft.a
+LIBFT		= libft.a
+LIBFTDIR	= libft
 
-LIBFTDIR = libft
+CC			= cc
+CFLAGS		= -Wall -Wextra -Werror
 
-CC = cc
+MAINC		= push_swap.c
+MAINO		= $(MAINC:.c=.o)
 
-MAINC = push_swap.c
+CFILES		= input_utils.c			split_to_ints.c		stack_utils.c	\
+			  instructions.c		sorting_utils.c		sort_three.c	\
+			  values_utils.c		rotation_utils.c	sort.c			\
+			  error_checks.c		
 
-MAINO = $(MAINC:.c=.o)
+BCFILES		= checker_bonus.c	checker_utils_bonus.c
 
-CFILES = input_utils.c		split_to_ints.c		stack_utils.c	\
-		 instructions.c		sorting_utils.c		sort_three.c	\
-		 values_utils.c		rotation_utils.c	sort.c			\
-		 error_checks.c		
+BOFILES		= $(BCFILES:.c=.o)
 
-BFILES = checker_bonus.c	checker_utils_bonus.c
-
-BOFILES = $(BFILES:.c=.o)
-
-OFILES = $(CFILES:.c=.o)
-
-CFLAGS = -Wall -Wextra -Werror
+OFILES		= $(CFILES:.c=.o)
 
 all: $(NAME)
 

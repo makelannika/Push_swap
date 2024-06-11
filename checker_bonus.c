@@ -6,7 +6,7 @@
 /*   By: amakela <amakela@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 15:44:25 by amakela           #+#    #+#             */
-/*   Updated: 2024/02/22 22:11:36 by amakela          ###   ########.fr       */
+/*   Updated: 2024/02/22 15:44:28 by amakela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <unistd.h>
 
 void	checker(t_node **a);
-char	**read_instructions(int *arg_count, char ***instructions);
+int		read_instructions(int *arg_count, char ***instructions);
 int		validity_check(char *line, char *all);
 int		execute(t_node **a, char **instructions, int arg_count);
 
@@ -54,11 +54,7 @@ void	checker(t_node **a)
 
 	arg_count = 0;
 	if (!read_instructions(&arg_count, &instructions))
-	{
-		if (*a && is_sorted(*a))
-			ft_printf("OK\n");
 		return ;
-	}
 	if (execute(a, instructions, arg_count))
 		ft_printf("OK\n");
 	else
@@ -66,7 +62,7 @@ void	checker(t_node **a)
 	freestr(instructions, arg_count);
 }
 
-char	**read_instructions(int *arg_count, char ***instructions)
+int	read_instructions(int *arg_count, char ***instructions)
 {
 	char	*temp;
 	char	*line;
@@ -77,19 +73,21 @@ char	**read_instructions(int *arg_count, char ***instructions)
 	while (line)
 	{
 		if (!validity_check(line, all))
-			return (NULL);
+			return (0);
 		temp = all;
 		all = ft_strjoin(all, line);
 		(*arg_count)++;
 		free(line);
 		free(temp);
 		if (!all)
-			return (NULL);
+			return (0);
 		line = get_next_line(0);
 	}
 	*instructions = ft_split(all, '\n');
+	if (!instructions)
+		return (0);
 	free(all);
-	return (*instructions);
+	return (1);
 }
 
 int	validity_check(char *line, char *all)
@@ -126,6 +124,8 @@ int	execute(t_node **a, char **instructions, int arg_count)
 
 	i = 0;
 	b = NULL;
+	if (!instructions && is_sorted(*a))
+		return (1);
 	while (i < arg_count)
 	{
 		if (instructions[i][0] == 's')

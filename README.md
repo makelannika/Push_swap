@@ -34,7 +34,7 @@ The goal is to create a program which outputs the most efficient sequence of ins
 
 
 
-The program takes a list of integers as input, representing stack A, and outputs the smallest sequence of operations required to sort stack A in ascending order. The first number corresponds to the top of Stack A.
+The program takes a list of integers as input, representing stack A, and outputs the smallest sequence of operations required to sort it in ascending order. The first number corresponds to the top of Stack A.
 
 The program displays `Error` if:
   - inputs are not integers

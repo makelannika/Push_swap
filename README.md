@@ -1,11 +1,5 @@
-# Push_swap
-
 **Push_swap** is an algorithm challenge that requires sorting a stack of integers using a minimal set of operations.  
 The goal is to create a program that outputs the most efficient sequence of instructions to sort the integers in ascending order.
-
----
-
-## Features
 
 ### Core Functionality
 
@@ -15,7 +9,6 @@ The goal is to create a program that outputs the most efficient sequence of inst
   - Duplicates.
   - Values outside the range of a signed integer.
 
----
 
 ## Rules and Operations
 
@@ -25,7 +18,7 @@ The goal is to create a program that outputs the most efficient sequence of inst
 - **Stack B**: Starts empty and is used as a helper stack.  
 - **Goal**: Sort all integers in ascending order in **Stack A**.
 
-### Available Operations
+### Operations
 
 1. **Swap**:
    - `sa`: Swap the first two elements of Stack A.
@@ -46,34 +39,17 @@ The goal is to create a program that outputs the most efficient sequence of inst
    - `rrb`: Shift all elements of Stack B down by one. The last element becomes the first.
    - `rrr`: Perform both `rra` and `rrb` simultaneously.
 
----
 
 ### Example Usage
 
 The program takes a list of integers as input, representing **Stack A**, and outputs the smallest sequence of operations required to sort it in ascending order.
 
-Example:
-$ ./push_swap 3 14 7 155 0
-pb
-pb
-sa
-ra
-pa
-pa
+Example: ./push_swap 3 14 7 155 0
 
 ---
-
 # Bonus: Checker Program
 
 The **Checker** program is a bonus addition to the **Push_swap** project. It allows you to verify whether a series of sorting instructions successfully sorts the stack provided as input.
-
----
-
-## Overview
-
-The **Checker** program takes the initial stack (Stack A) and a list of sorting instructions. It simulates the operations on Stack A and Stack B, then verifies if the stack is sorted in ascending order and Stack B is empty.
-
----
 
 ## How It Works
 

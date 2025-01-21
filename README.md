@@ -4,14 +4,6 @@ The goal is to create a program that outputs the most efficient sequence of inst
 
 
 
-### Core Functionality
-
-- **Efficient Sorting**: Generates a minimal sequence of instructions to sort the input integers.  
-- **Error Handling**: Handles invalid input, including:
-  - Non-integer values.
-  - Duplicates.
-  - Values outside the range of a signed integer.
-
 
 ### Stacks
 
@@ -40,17 +32,23 @@ The goal is to create a program that outputs the most efficient sequence of inst
    - `rrb`: Shift all elements of Stack B down by one. The last element becomes the first.
    - `rrr`: Perform both `rra` and `rrb` simultaneously.
 
-
 The program takes a list of integers as input, representing **Stack A**, and outputs the smallest sequence of operations required to sort it in ascending order.
 
-Example: ./push_swap 3 14 7 155 0
+Example: ./push_swap 3 2 1 0
+rra
+pb
+sa
+rra
+pa
+
+The program outputs `Error` if:
+- Input values are not integers or exceed integer limits.
+- Duplicate values are detected.
 
 ---
 ### Bonus: Checker Program
 
 The **Checker** program is a bonus addition to the **Push_swap** project. It allows you to verify whether a series of sorting instructions successfully sorts the stack provided as input.
-
-### How It Works
 
 ### Input
 
@@ -63,8 +61,6 @@ The **Checker** program is a bonus addition to the **Push_swap** project. It all
 - At the end of the operations:
   - If Stack A is sorted in ascending order and Stack B is empty, the program outputs `OK`.
   - Otherwise, it outputs `KO`.
-
-### Error Handling
 
 The program outputs `Error` if:
 - Invalid or incorrectly formatted instructions are provided.

@@ -34,13 +34,15 @@ The goal is to create a program that outputs the most efficient sequence of inst
 
 The program takes a list of integers as input, representing **Stack A**, and outputs the smallest sequence of operations required to sort it in ascending order.
 
-Example: ./push_swap 3 2 1 0
+Example:
+```bash
+$ ./push_swap 3 2 1 0
 rra
 pb
 sa
 rra
 pa
-
+```
 The program outputs `Error` if:
 - Input values are not integers or exceed integer limits.
 - Duplicate values are detected.

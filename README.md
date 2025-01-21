@@ -10,8 +10,6 @@ The goal is to create a program that outputs the most efficient sequence of inst
   - Values outside the range of a signed integer.
 
 
-## Rules and Operations
-
 ### Stacks
 
 - **Stack A**: Initially contains the unsorted integers provided as input.  
@@ -40,18 +38,16 @@ The goal is to create a program that outputs the most efficient sequence of inst
    - `rrr`: Perform both `rra` and `rrb` simultaneously.
 
 
-### Example Usage
-
 The program takes a list of integers as input, representing **Stack A**, and outputs the smallest sequence of operations required to sort it in ascending order.
 
 Example: ./push_swap 3 14 7 155 0
 
 ---
-# Bonus: Checker Program
+### Bonus: Checker Program
 
 The **Checker** program is a bonus addition to the **Push_swap** project. It allows you to verify whether a series of sorting instructions successfully sorts the stack provided as input.
 
-## How It Works
+### How It Works
 
 ### Input
 
@@ -72,14 +68,11 @@ The program outputs `Error` if:
 - Input values are not integers or exceed integer limits.
 - Duplicate values are detected.
 
----
 
 The **Checker** program supports all the operations used in **Push_swap**:
 
 
-## Example Usage
-
-### Valid Case
+### Example Usage
 ```bash
 $ ./checker 3 2 1 0
 rra

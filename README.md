@@ -1,4 +1,5 @@
-### Push_swap ### is an algorithm challenge that requires sorting a stack of integers using a minimal set of operations.  
+### Push_swap 
+an algorithm challenge that requires sorting a stack of integers using a minimal set of operations.  
 The goal is to create a program that outputs the most efficient sequence of instructions to sort the integers in ascending order.
 
 ### Core Functionality

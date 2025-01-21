@@ -2,6 +2,8 @@
 an algorithm challenge that requires sorting a stack of integers using a minimal set of operations.  
 The goal is to create a program that outputs the most efficient sequence of instructions to sort the integers in ascending order.
 
+
+
 ### Core Functionality
 
 - **Efficient Sorting**: Generates a minimal sequence of instructions to sort the input integers.  

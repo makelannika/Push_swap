@@ -32,8 +32,6 @@ The goal is to create a program that outputs the most efficient sequence of inst
    - `rrb`: Shift all elements of Stack B down by one. The last element becomes the first.
    - `rrr`: Perform both `rra` and `rrb` simultaneously.
 
-The program takes a list of integers as input, representing **Stack A**, and outputs the smallest sequence of operations required to sort it in ascending order.
-
 Example:
 ```bash
 $ ./push_swap 3 2 1 0
